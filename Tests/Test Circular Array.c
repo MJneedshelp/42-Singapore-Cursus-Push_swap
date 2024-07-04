@@ -31,12 +31,12 @@ int	main(void)
 
 
 	p_itm = rm_itm(cray1, arrsz);
-	printf("Removed item: %d\n", p_itm);
+	printf("Removed item: %d\n", cray1->stack[p_itm]);
 	p_itm = rm_itm(cray1, arrsz);
-	printf("Removed item: %d\n", p_itm);
+	printf("Removed item: %d\n", cray1->stack[p_itm]);
 
 	add_itm(cray1, 6, arrsz);
-	add_itm(cray1, 7, arrsz);
+	//add_itm(cray1, 7, arrsz);
 	printf("After adding. Stack addr: %p | Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n",cray1->stack, arrsz, cray1->count, cray1->headidx, cray1->tailidx);
 	print_cray(cray1, arrsz);
 	printf("Perform swap. Stack after swap\n");
