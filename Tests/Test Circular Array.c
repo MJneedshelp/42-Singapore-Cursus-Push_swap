@@ -29,14 +29,23 @@ int	main(void)
 	add_itm(cray1, 5, arrsz);
 	printf("After adding. Stack addr: %p | Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n",cray1->stack, arrsz, cray1->count, cray1->headidx, cray1->tailidx);
 
-	
+
 	p_itm = rm_itm(cray1, arrsz);
 	printf("Removed item: %d\n", p_itm);
 	p_itm = rm_itm(cray1, arrsz);
 	printf("Removed item: %d\n", p_itm);
-	
+
 	add_itm(cray1, 6, arrsz);
 	add_itm(cray1, 7, arrsz);
 	printf("After adding. Stack addr: %p | Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n",cray1->stack, arrsz, cray1->count, cray1->headidx, cray1->tailidx);
+	print_cray(cray1, arrsz);
+	printf("Perform swap. Stack after swap\n");
+	swap(cray1, arrsz);
+	print_cray(cray1, arrsz);
+	printf("Perform swap again. Stack after swap\n");
+	swap(cray1, arrsz);
+	print_cray(cray1, arrsz);
+	printf("Rotate cw. Stack after swap\n");
+	rotate_cw(cray1, arrsz);
 	print_cray(cray1, arrsz);
 }

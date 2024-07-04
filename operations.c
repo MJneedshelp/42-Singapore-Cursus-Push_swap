@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   circular_array_utils_2.c                           :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,25 +12,34 @@
 
 #include "push_swap.h"
 
-/* Description: Prints the circular array starting from the head index to the 
-   tail index. Only prints out the number of items in the circular array and 
-   not all the items in the array by using the count.
+/* Description: Swaps the head item with the next adjacent item. No action
+   performed if the circular array is empty or if it has less than 2 items.
 */
 
-// SWITCH OUT THE PRINTF LATER WITH YOUR OWN PRINTF
-
-void	print_cray(t_cray *cray, int arrsz)
+void	swap(t_cray *cray, int arrsz)
 {
-	int	start;
-	int	count;
+	int	temp;
 
-	start = cray->headidx;
-	count = 0;
-	printf("Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n", arrsz, cray->count, cray->headidx, cray->tailidx);
-	while (count < cray->count)
-	{
-		printf("%d\n", cray->stack[start]);
-		start = (start + 1) % arrsz;
-		count++;
-	}
+	if (chk_cray_empty(cray) == 1 || cray->count < 2)
+		return ;
+	temp = cray->stack[cray->headidx];
+	cray->stack[cray->headidx] = cray->stack[(cray->headidx + 1) % arrsz];
+	cray->stack[cray->headidx + 1] = temp;
+}
+
+/* Description: Rotates the circular array clockwise by setting the
+   head index + 1 and setting the tail index as the old head index.
+   No action performed if the circular array is empty or if it has
+   less than 2 items.
+*/
+
+void	rotate_cw(t_cray *cray, int arrsz)
+{
+	int	temp;
+
+	if (chk_cray_empty(cray) == 1 || cray->count < 2)
+		return ;
+	temp = cray->headidx;
+	cray->headidx = (cray->headidx + 1) % arrsz;
+	cray->tailidx = temp;
 }

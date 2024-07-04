@@ -33,5 +33,8 @@ void	add_itm(t_cray *cray, int val, int arrsz);
 int		rm_itm(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 
+/* push_swap Operations */
+void	swap(t_cray *cray, int arrsz);
+void	rotate_cw(t_cray *cray, int arrsz);
 
 #endif
