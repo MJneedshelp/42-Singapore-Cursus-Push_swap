@@ -14,16 +14,20 @@
 
 /* Description:
 */
-void	init_cray(t_cray *cray, int arrsz)
+t_cray	*init_cray(int arrsz)
 {
-	//cray->stack = (int *)malloc(arrsz * sizeof(int));
-	printf("inside init\n");
-	//if (cray->stack == NULL)
-	//	return (NULL);
-	cray->count = 10;
-	printf("assign\n");
+	t_cray	*cray;
+
+	cray = (t_cray *)malloc(sizeof(t_cray));
+	if (cray == NULL)
+		return (NULL);
+	cray->stack = (int *)malloc(arrsz * sizeof(int));
+	if (cray->stack == NULL)
+		return (free(cray), NULL);
+	cray->count = 0;
 	cray->headidx = 0;
 	cray->tailidx = 0;
+	return (cray);
 }
 
 int		chk_cray_full(t_cray *cray, int arrsz)
@@ -40,20 +44,18 @@ void	add_itm(t_cray *cray, int val, int arrsz)
 {
 	if (!chk_cray_full)
 		return;
-	printf("Inside add item before. Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d | val: %d\n", arrsz, cray->count, cray->headidx, cray->tailidx, val);
 	cray->count++;
-	printf("No. items: %d\n", cray->count);
+	// printf("No. items: %d\n", cray->count);
 	cray->stack[cray->tailidx] = val;
-	printf("%d\n", cray->stack[cray->tailidx]);
+	// printf("%d\n", cray->stack[cray->tailidx]);
 	cray->tailidx = (cray->tailidx + 1) % arrsz;
-	printf("Inside add item after. Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n", arrsz, cray->count, cray->headidx, cray->tailidx);
 }
 
 int	rm_itm(t_cray *cray, int arrsz)
 {
 	int	rmitm_val;
 
-	if (chk_cray_empty)
+	if (chk_cray_empty == 1)
 		return (NULL);
 	rmitm_val = cray->stack[cray->headidx];
 	cray->headidx = (cray->headidx + 1) % arrsz;
@@ -73,6 +75,7 @@ void	print_cray(t_cray *cray, int arrsz)
 	{
 		printf("%d\n", cray->stack[start]);
 		start = (start + 1) % arrsz;
+		count++;
 	}
 }
 
@@ -80,18 +83,18 @@ int	main(void)
 {
 	t_cray *cray1;
 	int		arrsz;
+	int		p_itm;
 
 	arrsz = 5;
-	printf("here\n");
-	init_cray(cray1, arrsz);
-	printf("After init. Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n", arrsz, cray1->count, cray1->headidx, cray1->tailidx);
-	printf("Count: %d\n", cray1->count);
-	//(cray1->stack)[0] = 1;
-	//printf("&d\n", cray1->stack[0]);
-	/*
+	cray1 = init_cray(arrsz);
+	printf("After init. Stack addr: %p | Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n",cray1->stack, arrsz, cray1->count, cray1->headidx, cray1->tailidx);
+
 	add_itm(cray1, 1, arrsz);
 	add_itm(cray1, 2, arrsz);
 	add_itm(cray1, 3, arrsz);
 	add_itm(cray1, 4, arrsz);
-	print_cray(cray1, arrsz);*/
+	p_itm = rm_itm(cray1, arrsz);
+	printf("Removed item: %d\n", p_itm);
+	// printf("%d\n", cray1->stack[0]);
+	print_cray(cray1, arrsz);
 }
