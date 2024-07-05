@@ -29,12 +29,15 @@ typedef struct s_circlearray
 t_cray	*init_cray(int arrsz);
 int		chk_cray_full(t_cray *cray, int arrsz);
 int		chk_cray_empty(t_cray *cray);
-void	add_itm(t_cray *cray, int val, int arrsz);
-int		rm_itm(t_cray *cray, int arrsz);
+void	add_itm_tl(t_cray *cray, int val, int arrsz);
+void	add_itm_hd(t_cray *cray, int val, int arrsz);
+int		rm_itm_hd(t_cray *cray, int arrsz);
+int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 
 /* push_swap Operations */
 void	swap(t_cray *cray, int arrsz);
 void	rotate_cw(t_cray *cray, int arrsz);
+void	rotate_ccw(t_cray *cray, int arrsz);
 
 #endif

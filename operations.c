@@ -29,7 +29,7 @@ void	swap(t_cray *cray, int arrsz)
 
 /* Description: Rotates the circular array clockwise:
    - remove the head
-   - add the head value to tail of the queue
+   - adds the head value to tail of the queue
    - No action performed if the circular array has less than 2 items.
 */
 
@@ -39,6 +39,22 @@ void	rotate_cw(t_cray *cray, int arrsz)
 
 	if (cray->count < 2)
 		return ;
-	temp = cray->stack[rm_itm(cray, arrsz)];
-	add_itm(cray, temp, arrsz);
+	temp = cray->stack[rm_itm_hd(cray, arrsz)];
+	add_itm_tl(cray, temp, arrsz);
+}
+
+/* Description: Rotates the circular array counter-clockwise:
+   - remove the tail
+   - adds the tail value to head of the queue
+   - No action performed if the circular array has less than 2 items.
+*/
+
+void	rotate_ccw(t_cray *cray, int arrsz)
+{
+	int	temp;
+
+	if (cray->count < 2)
+		return ;
+	temp = cray->stack[rm_itm_tl(cray, arrsz)];
+	add_itm_hd(cray, temp, arrsz);
 }

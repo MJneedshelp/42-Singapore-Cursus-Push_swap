@@ -17,7 +17,7 @@
    - stack: an array of integers with size - arrsz. Memory allocated with malloc
    - count: the number of items in the array. Initialised as 0
    - headidx: the index of the head of the circular array. Initialised as 0
-   - tailidx: the index of the tail of the circular array. Initialised as -1 
+   - tailidx: the index of the tail of the circular array. Initialised as -1
    (behind the head)
    Returns a pointer to the structure.
 */
@@ -37,7 +37,7 @@ t_cray	*init_cray(int arrsz)
 	return (cray);
 }
 
-/* Description: Checks if all indices of the cicular array is filled by 
+/* Description: Checks if all indices of the cicular array is filled by
    comparing the count with the arrsz.
 */
 
@@ -57,7 +57,7 @@ int	chk_cray_empty(t_cray *cray)
    not added if the circular array is full already.
 */
 
-void	add_itm(t_cray *cray, int val, int arrsz)
+void	add_itm_tl(t_cray *cray, int val, int arrsz)
 {
 	if (chk_cray_full < 0)
 		return ;
@@ -66,19 +66,15 @@ void	add_itm(t_cray *cray, int val, int arrsz)
 	cray->stack[cray->tailidx] = val;
 }
 
-/* Description: "removes" an item from the circular array starting from the 
-   head by incrementing the headidx. Returns the old head index before the 
-   increment. If the circular array is empty, return -1.
+/* Description: adds an item into the circular array from the head. Item is
+   not added if the circular array is full already.
 */
 
-int	rm_itm(t_cray *cray, int arrsz)
+void	add_itm_hd(t_cray *cray, int val, int arrsz)
 {
-	int	rmitm_val;
-
-	if (chk_cray_empty(cray) == 1)
-		return (-1);
-	rmitm_val = cray->headidx;
-	cray->headidx = (cray->headidx + 1) % arrsz;
-	cray->count--;
-	return (rmitm_val);
+	if (chk_cray_full < 0)
+		return ;
+	cray->count++;
+	cray->headidx = (cray->headidx - 1 + arrsz) % arrsz;
+	cray->stack[cray->headidx] = val;
 }
