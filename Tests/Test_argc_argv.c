@@ -1,0 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Test_argc_argv.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/05 23:31:00 by mintan            #+#    #+#             */
+/*   Updated: 2024/07/05 23:31:00 by mintan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include<stdio.h>
+#include "../libft/libft.h"
+
+int main(int argc, char *argv[])
+{
+	printf("No. of arguments: %d\n", argc);
+	for(int i = 0; i < argc; i++)
+		printf("argument: %d | value: %s | strlen: %d\n", i, argv[i], ft_strlen(argv[i]));
+}
