@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../include/push_swap.h"
+#include "../include/libft.h"
+#include "../include/ft_printf.h"
 
 int	main(void)
 {

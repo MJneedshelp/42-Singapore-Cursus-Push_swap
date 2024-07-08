@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+#include "../../include/libft.h"
 
 /* Description: "removes" an item from the circular array starting from the
    head by incrementing the headidx. Returns the old head index before the
