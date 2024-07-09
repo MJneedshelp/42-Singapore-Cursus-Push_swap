@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 00:10:20 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/07 19:29:18 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/09 12:48:18 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../../include/ft_printf.h"
 
 
-
+/*
 //Proper main
 int	main(int argc, char	*argv[])
 {
@@ -48,7 +48,7 @@ int	main(int argc, char	*argv[])
 	//		- perform algo to sort stack A
 	//		- tbd
 }
-
+*/
 
 
 
@@ -56,7 +56,7 @@ int	main(int argc, char	*argv[])
 
 
 // Main used for testing things
-/*
+
 int	main(void)
 {
 	t_cray	*cr1;
@@ -69,4 +69,4 @@ int	main(void)
 	printf("Test ft_strlen for word: %lu\n", ft_strlen("word"));
 	ft_printf("Testing ft_printf\n");
 }
-*/
+

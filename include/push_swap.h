@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:42:24 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/07 16:11:28 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/09 16:37:15 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,17 @@ int		rm_itm_hd(t_cray *cray, int arrsz);
 int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 
-/* push_swap Operations */
+/* push_swap Operations Utilities */
 void	swap(t_cray *cray, int arrsz);
 void	rotate_cw(t_cray *cray, int arrsz);
 void	rotate_ccw(t_cray *cray, int arrsz);
+
+/* push_swap Operations */
+void	ps_swap_stack(t_cray *stack, int arrsz, char c);
+void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c);
+void	ps_rotate_stack(t_cray *stack, int arrsz, char c);
+void	ps_rev_rotate_stack(t_cray *stack, int arrsz, char c);
+void	ps_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
+void	ps_rev_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 
 #endif
