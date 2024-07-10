@@ -16,7 +16,7 @@
 
 
 /*
-//Proper main
+//Main logic
 int	main(int argc, char	*argv[])
 {
 	//1. Input validation (probably can be 1 file by itself):
@@ -51,6 +51,22 @@ int	main(int argc, char	*argv[])
 */
 
 
+
+int	main(int argc, char *argv[])
+{
+	int		*arr;
+	t_cray	*stack_a;
+	t_cray	*stack_b;
+
+	arr = ps_input_validation(argc, argv);
+	if (arr == NULL)
+		return(ft_printf("Error\n"), -1);
+	stack_a = ps_init_stack(argc - 1, arr);
+	stack_b = ps_init_stack(argc - 1, NULL);
+	//need to think of freeing if malloc fails
+
+
+}
 
 
 

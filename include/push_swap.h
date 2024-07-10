@@ -51,6 +51,7 @@ void	ps_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 void	ps_rev_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 
 /* push_swap main steps */
-int	*ps_input_validation(int argc, char *argv[]);
+int		*ps_input_validation(int argc, char *argv[]);
+t_cray	*ps_init_stack(int arrsz, int *arr);
 
 #endif

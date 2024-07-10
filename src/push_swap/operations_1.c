@@ -49,7 +49,7 @@ void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c)
 	stack_index = 0;
 	rm_val = 0;
 	stack_index = rm_itm_hd(stack1, arrsz);
-	if (stack_index > 0)
+	if (stack_index >= 0)
 	{
 		rm_val = stack1->stack[stack_index];
 		add_itm_hd(stack2, rm_val, arrsz);
@@ -57,7 +57,7 @@ void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c)
 	ft_printf("p%c\n", c);
 }
 
-/* Decription: Rotates the stack clockwise (head becomes the tail). Prints 
+/* Decription: Rotates the stack clockwise (head becomes the tail). Prints
    out the operation r(a) or r(b) based on the input char c.
   */
 
