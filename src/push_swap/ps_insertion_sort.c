@@ -28,23 +28,55 @@
 
 int	sort_utils_find_least(t_cray *stk, int arrsz)
 {
-	int	curr_idx;
+	int	hdidx;
 	int	lowest;
+	int	retidx;
 	int	i;
 
 	i = 0;
 	lowest = stk->stack[stk->headidx];
-	curr_idx = stk->headidx;
-	printf("Before while. Lowest: %d | idx: %d | i: %d | count: %d\n", lowest, idx, i, stk->count);
-	while (i < stk->count)
+	hdidx = stk->headidx;
+	retidx = stk->headidx;
+	while (i < stk->count - 1)
 	{
-		if (stk->stack[(idx + i + 1) % arrsz] < lowest)
+		if (stk->stack[(hdidx + i + 1) % arrsz] < lowest)
 		{
-			lowest = stk->stack[(idx + i + 1) % arrsz];
-			//idx = (idx + 1) % arrsz;
-			printf("Inside while if. Lowest: %d | idx: %d\n", lowest, idx);
+			lowest = stk->stack[(hdidx + i + 1) % arrsz];
+			retidx = (hdidx + i + 1) % arrsz;
 		}
 		i++;
 	}
-	return (idx);
+	return (retidx);
+}
+
+
+int	main(int argc, char *argv[])
+{
+	int		*arr;
+	int		i;
+	t_cray	*stack_a;
+	t_cray	*stack_b;
+
+	arr = ps_input_validation(argc, argv);
+	i = 0;
+	printf("Arr: %p\n", arr);
+	if (arr != NULL)
+	{
+		while (i < argc - 1)
+		{
+			printf("Item in arr: %d\n", arr[i]);
+			i++;
+		}
+	}
+	stack_a = ps_init_stack(argc - 1, arr);
+	stack_b = ps_init_stack(argc - 1, NULL);
+	print_cray(stack_a, argc - 1);
+	print_cray(stack_b, argc - 1);
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	print_cray(stack_a, argc - 1);
+	print_cray(stack_b, argc - 1);
+	printf("Smallest element in stack_a: %d | index: %d\n", stack_a->stack[sort_utils_find_least(stack_a, argc -1)], sort_utils_find_least(stack_a, argc -1));
+	printf("Smallest element in stack_b: %d | index: %d\n", stack_b->stack[sort_utils_find_least(stack_b, argc -1)], sort_utils_find_least(stack_b, argc -1));
 }

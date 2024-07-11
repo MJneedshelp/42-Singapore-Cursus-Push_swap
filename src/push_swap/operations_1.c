@@ -52,7 +52,10 @@ void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c)
 	if (stack_index >= 0)
 	{
 		rm_val = stack1->stack[stack_index];
-		add_itm_hd(stack2, rm_val, arrsz);
+		if (stack2->tailidx == -1)
+			add_itm_tl(stack2, rm_val, arrsz);
+		else
+			add_itm_hd(stack2, rm_val, arrsz);
 	}
 	ft_printf("p%c\n", c);
 }
