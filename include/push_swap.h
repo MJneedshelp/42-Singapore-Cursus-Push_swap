@@ -54,4 +54,7 @@ void	ps_rev_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 int		*ps_input_validation(int argc, char *argv[]);
 t_cray	*ps_init_stack(int arrsz, int *arr);
 
+/* Sort Utilities*/
+int	sort_utils_find_least(t_cray *stk, int arrsz);
+
 #endif

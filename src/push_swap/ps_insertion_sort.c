@@ -26,17 +26,23 @@
    the element.
 */
 
-int	sort_utils_find_least(t_cray *stack)
+int	sort_utils_find_least(t_cray *stk, int arrsz)
 {
 	int	idx;
 	int	lowest;
 	int	i;
 
 	i = 0;
-	lowest = stack->stack[stack->headidx];
-	idx = stack->headidx;
-	while (i < stack->count)
+	lowest = stk->stack[stk->headidx];
+	idx = stk->headidx;
+	while (i < (stk->count) - 1)
 	{
-
+		if (stk->stack[(idx + 1) % arrsz] < lowest)
+		{
+			lowest = stk->stack[(idx + 1) % arrsz];
+			idx = (idx + 1) % arrsz;
+			i++;
+		}
 	}
+	return (idx);
 }
