@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:56:37 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/09 18:08:43 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/11 19:56:34 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,12 @@ int	main(void)
 	print_cray(cray1, arrsz);
 	printf("cray2\n");
 	print_cray(cray2, arrsz);
+	printf("swap cray1\n");
+	ps_swap_stack(cray1, arrsz, '1');
+	print_cray(cray1, arrsz);
+	printf("rotate cray2\n");
+	ps_rotate_stack(cray2, arrsz, '2');
+	print_cray(cray2, arrsz);
+	printf("Index of smallest element for cray1: %d\n", sort_utils_find_least(cray1, arrsz));	
+	printf("Index of smallest element for cray2: %d\n", sort_utils_find_least(cray2, arrsz));	
 }

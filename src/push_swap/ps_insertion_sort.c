@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/10 21:48:53 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/11 19:56:20 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,23 @@
 
 int	sort_utils_find_least(t_cray *stk, int arrsz)
 {
-	int	idx;
+	int	curr_idx;
 	int	lowest;
 	int	i;
 
 	i = 0;
 	lowest = stk->stack[stk->headidx];
-	idx = stk->headidx;
-	while (i < (stk->count) - 1)
+	curr_idx = stk->headidx;
+	printf("Before while. Lowest: %d | idx: %d | i: %d | count: %d\n", lowest, idx, i, stk->count);
+	while (i < stk->count)
 	{
-		if (stk->stack[(idx + 1) % arrsz] < lowest)
+		if (stk->stack[(idx + i + 1) % arrsz] < lowest)
 		{
-			lowest = stk->stack[(idx + 1) % arrsz];
-			idx = (idx + 1) % arrsz;
-			i++;
+			lowest = stk->stack[(idx + i + 1) % arrsz];
+			//idx = (idx + 1) % arrsz;
+			printf("Inside while if. Lowest: %d | idx: %d\n", lowest, idx);
 		}
+		i++;
 	}
 	return (idx);
 }
