@@ -22,34 +22,17 @@
 //	3. repeat steps 1 to 3 until all elements
 
 
-/* Description: Finds the smallest element in a stack and returns the index of
+
+
+/* Description: Rotates an element in the stack to the head. Uses rotate if
+   the element is closer to the head and reverse rotate if the element is
+   closer to the tail.
+
+Finds the smallest element in a stack and returns the index of
    the element.
 */
 
-int	sort_utils_find_least(t_cray *stk, int arrsz)
-{
-	int	hdidx;
-	int	lowest;
-	int	retidx;
-	int	i;
-
-	i = 0;
-	lowest = stk->stack[stk->headidx];
-	hdidx = stk->headidx;
-	retidx = stk->headidx;
-	while (i < stk->count - 1)
-	{
-		if (stk->stack[(hdidx + i + 1) % arrsz] < lowest)
-		{
-			lowest = stk->stack[(hdidx + i + 1) % arrsz];
-			retidx = (hdidx + i + 1) % arrsz;
-		}
-		i++;
-	}
-	return (retidx);
-}
-
-
+/*
 int	main(int argc, char *argv[])
 {
 	int		*arr;
@@ -80,3 +63,4 @@ int	main(int argc, char *argv[])
 	printf("Smallest element in stack_a: %d | index: %d\n", stack_a->stack[sort_utils_find_least(stack_a, argc -1)], sort_utils_find_least(stack_a, argc -1));
 	printf("Smallest element in stack_b: %d | index: %d\n", stack_b->stack[sort_utils_find_least(stack_b, argc -1)], sort_utils_find_least(stack_b, argc -1));
 }
+*/
