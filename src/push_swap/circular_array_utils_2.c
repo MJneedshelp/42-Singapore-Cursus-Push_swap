@@ -119,40 +119,42 @@ void	print_cray(t_cray *cray, int arrsz)
 
 
 
-int	main(int argc, char *argv[])
-{
-	int		*arr;
-	int		i;
-	t_cray	*stack_a;
-	t_cray	*stack_b;
-	int		smallest_index;
+// int	main(int argc, char *argv[])
+// {
+// 	int		*arr;
+// 	int		i;
+// 	t_cray	*stack_a;
+// 	t_cray	*stack_b;
+// 	int		smallest_index;
 
-	arr = ps_input_validation(argc, argv);
-	i = 0;
-	printf("Arr: %p\n", arr);
-	if (arr != NULL)
-	{
-		while (i < argc - 1)
-		{
-			printf("Item in arr: %d\n", arr[i]);
-			i++;
-		}
-	}
-	stack_a = ps_init_stack(argc - 1, arr);
-	stack_b = ps_init_stack(argc - 1, NULL);
-	print_cray(stack_a, argc - 1);
-	print_cray(stack_b, argc - 1);
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	print_cray(stack_a, argc - 1);
-	print_cray(stack_b, argc - 1);
-	printf("Smallest element in stack_a: %d | index: %d\n", stack_a->stack[find_least(stack_a, argc -1)], find_least(stack_a, argc -1));
-	printf("Smallest element in stack_b: %d | index: %d\n", stack_b->stack[find_least(stack_b, argc -1)], find_least(stack_b, argc -1));
-	smallest_index = find_least(stack_a, argc -1);
-	printf("Stack_a. Dist of smallest element to head: %d\n", find_dist(argc - 1, stack_a->headidx, smallest_index));
-	printf("Stack_a. Dist of smallest element to tail: %d\n", find_dist(argc - 1, smallest_index, stack_a->tailidx));
-	smallest_index = find_least(stack_b, argc -1);
-	printf("Stack_a. Dist of smallest element to head: %d\n", find_dist(argc - 1, stack_b->headidx, smallest_index));
-	printf("Stack_a. Dist of smallest element to tail: %d\n", find_dist(argc - 1, smallest_index, stack_b->tailidx));
-}
+// 	arr = ps_input_validation(argc, argv);
+// 	i = 0;
+// 	printf("Arr: %p\n", arr);
+// 	if (arr != NULL)
+// 	{
+// 		while (i < argc - 1)
+// 		{
+// 			printf("Item in arr: %d\n", arr[i]);
+// 			i++;
+// 		}
+// 	}
+// 	stack_a = ps_init_stack(argc - 1, arr);
+// 	stack_b = ps_init_stack(argc - 1, NULL);
+// 	print_cray(stack_a, argc - 1);
+// 	print_cray(stack_b, argc - 1);
+// 	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+// 	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+// 	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+// 	print_cray(stack_a, argc - 1);
+// 	print_cray(stack_b, argc - 1);
+// 	printf("Smallest element in stack_a: %d | index: %d\n", stack_a->stack[find_least(stack_a, argc -1)], find_least(stack_a, argc -1));
+// 	printf("Smallest element in stack_b: %d | index: %d\n", stack_b->stack[find_least(stack_b, argc -1)], find_least(stack_b, argc -1));
+// 	smallest_index = find_least(stack_a, argc -1);
+// 	printf("Stack_a. Dist of smallest element to head: %d\n", find_dist(argc - 1, stack_a->headidx, smallest_index));
+// 	printf("Stack_a. Dist of smallest element to tail: %d\n", find_dist(argc - 1, smallest_index, stack_a->tailidx));
+// 	// smallest_index = find_least(stack_b, argc -1);
+// 	// printf("Stack_b. Dist of smallest element to head: %d\n", find_dist(argc - 1, stack_b->headidx, smallest_index));
+// 	// printf("Stack_b. Dist of smallest element to tail: %d\n", find_dist(argc - 1, smallest_index, stack_b->tailidx));
+// 	rotate_to_head(stack_a, argc - 1, smallest_index);
+// 	print_cray(stack_a, argc - 1);
+// }

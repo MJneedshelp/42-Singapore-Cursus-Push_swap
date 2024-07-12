@@ -37,6 +37,7 @@ int		rm_itm_hd(t_cray *cray, int arrsz);
 int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 int		find_least(t_cray *cray, int arrsz);
+int		find_dist(int arrsz, int from, int to);
 
 /* push_swap Operations Utilities */
 void	swap(t_cray *cray, int arrsz);
@@ -56,6 +57,7 @@ int		*ps_input_validation(int argc, char *argv[]);
 t_cray	*ps_init_stack(int arrsz, int *arr);
 
 /* Sort Utilities*/
+void	rotate_to_head(t_cray *stk, int arrsz, int index);
 
 
 #endif
