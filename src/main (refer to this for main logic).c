@@ -64,8 +64,7 @@ int	main(int argc, char *argv[])
 	stack_a = ps_init_stack(argc - 1, arr);
 	stack_b = ps_init_stack(argc - 1, NULL);
 	//need to think of freeing if malloc fails
-
-
+	ps_insertion_sort(stack_a, stack_b, argc - 1);
 }
 
 
@@ -73,16 +72,16 @@ int	main(int argc, char *argv[])
 
 // Main used for testing things
 
-int	main(void)
-{
-	t_cray	*cr1;
-	int		arrsz;
+// int	main(void)
+// {
+// 	t_cray	*cr1;
+// 	int		arrsz;
 
-	arrsz = 5;
-	cr1 = init_cray(arrsz);
-	add_itm_tl(cr1, 1, arrsz);
-	print_cray(cr1, arrsz);
-	printf("Test ft_strlen for word: %lu\n", ft_strlen("word"));
-	ft_printf("Testing ft_printf\n");
-}
+// 	arrsz = 5;
+// 	cr1 = init_cray(arrsz);
+// 	add_itm_tl(cr1, 1, arrsz);
+// 	print_cray(cr1, arrsz);
+// 	printf("Test ft_strlen for word: %lu\n", ft_strlen("word"));
+// 	ft_printf("Testing ft_printf\n");
+// }
 

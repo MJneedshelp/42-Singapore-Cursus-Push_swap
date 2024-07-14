@@ -58,6 +58,7 @@ t_cray	*ps_init_stack(int arrsz, int *arr);
 
 /* Sort Utilities*/
 void	rotate_to_head(t_cray *stk, int arrsz, int index);
+void	ps_insertion_sort(t_cray *stack_a, t_cray stack_b, int arrsz);
 
 
 #endif
