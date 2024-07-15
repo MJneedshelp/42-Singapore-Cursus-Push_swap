@@ -69,6 +69,62 @@ int check_duplicate(int *arr, int arrsz)
 	return (1);
 }
 
+/* Description: Takes in a array of integers, which can contain negative
+   numbers, and an integer value: least. Returns the index of the next smallest
+   element after least.
+*/
+int	find_next_least(int *arr, int arrsz, int least)
+{
+	int	retidx;
+	int	i;
+	int	next_least;
+
+	i = 0;
+	retidx = 0;
+	next_least = INT_MAX;
+	while (i < arrsz)
+	{
+		if (arr[i] < next_least && arr[i] > least)
+		{
+			retidx = i;
+			next_least = arr[i];
+		}
+		i++;
+	}
+	return (retidx);
+}
+
+/* Description: Takes in an array of integers, which can contain negative numbers,
+   and converts all the integers to positive integers starting with 0. The
+   relative positions the integers in the original array is preserved.
+*/
+int	*simplify_arr(int *arr, int arrsz)
+{
+	int		*ret;
+	long	least;
+	int		least_idx;
+	int		i;
+
+	i = 0;
+	least = INT_MIN;
+	ret = (int *)malloc(arrsz * sizeof(int));
+	if (ret == NULL)
+		return (NULL);
+	while (i < arrsz)
+	{
+		least_idx = find_next_least(arr, arrsz, least);
+		least = arr[least_idx];
+		ret[least_idx] = i;
+		i++;
+	}
+	free(arr);
+	return (ret);
+}
+
+
+
+
+
 /* Description: validates the incoming arguments received in main.
    - input: argc, argv[]
    - return:
@@ -99,18 +155,33 @@ int	*ps_input_validation(int argc, char *argv[])
 	}
 	if (check_duplicate(ret, argc - 1) == 0)
 		return (free(ret), NULL);
+	ret = simplify_arr(ret, argc - 1);
+	if (ret == NULL)
+		return (NULL);
 	return (ret);
 }
 
+
+
+
+
+
+
+
+
+
 // Testing for input validation
-/*
+
 int	main(int argc, char *argv[])
 {
 	int	*arr;
 	int	i;
+	int	j;
+	int	least;
 
 	arr = ps_input_validation(argc, argv);
 	i = 0;
+	j = 0;
 	printf("Arr: %p\n", arr);
 	if (arr != NULL)
 	{
@@ -120,5 +191,13 @@ int	main(int argc, char *argv[])
 			i++;
 		}
 	}
+	//printf("Index of least: %d\n", find_next_least(arr, argc - 1, -11));
+	arr = simplify_arr(arr, argc - 1);
+	printf("Simplified Arr: %p\n", arr);
+	while (j < argc - 1)
+	{
+		printf("Simplified arr: %d\n", arr[j]);
+		j++;
+	}
 }
-*/
+

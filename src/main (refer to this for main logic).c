@@ -25,7 +25,7 @@ int	main(int argc, char	*argv[])
 	//		- array of integers if all items are validated
 	//		- NULL pointer if argc == 1 (no input)
 	//		-
-	//	- Acions: checks the following
+	//	- Actions: checks the following
 	//		- no input
 	//			- atoi for each argument
 	//			- inputs are not integers
@@ -33,7 +33,11 @@ int	main(int argc, char	*argv[])
 	//		- out of range of integers
 	//		- Duplicate numbers
 
-	//2. Init stack x 2 for A and B stack (probably can be 1 file by itself)
+	//2. Convert array of integers into all running order positive integers
+	//	- Look for smallest element
+	//	- get range
+
+	//3. Init stack x 2 for A and B stack (probably can be 1 file by itself)
 	//	- input: array from 1, argc (count of items in array)
 	//	- return: cray A
 	//	- Actions:
@@ -41,7 +45,7 @@ int	main(int argc, char	*argv[])
 	//		- if array is not NULL
 	//			- while not arrsz, add items into stack
 
-	//3. Algorithm function
+	//4. Algorithm function
 	//	- input: stacks A and B
 	//	- return: void
 	//	- Actions:
