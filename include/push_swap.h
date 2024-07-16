@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:42:24 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 15:21:11 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:02:48 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ps_rev_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 /* push_swap main steps */
 int		*ps_input_validation(int argc, char *argv[]);
 t_cray	*ps_init_stack(int arrsz, int *arr);
+void	ps_sort_three(t_cray *stack, int arrsz, char c);
 
 /* Sort Utilities*/
 void	rotate_to_head(t_cray *stk, int arrsz, int index);

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 00:10:20 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 16:17:22 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 19:17:51 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char	*argv[])
 */
 
 
-
+/*
 int	main(int argc, char *argv[])
 {
 	int		*arr;
@@ -75,6 +75,25 @@ int	main(int argc, char *argv[])
 	print_cray(stack_a, argc - 1);
 	return (0);
 
+}
+*/
+
+//Used for testing
+int	main(int argc, char *argv[])
+{
+	int		*arr;
+	t_cray	*stack_a;
+	t_cray	*stack_b;
+
+	arr = ps_input_validation(argc, argv);
+	stack_a = ps_init_stack(argc - 1, arr);
+	stack_b = ps_init_stack(argc - 1, NULL);
+	printf("Stack A\n");
+	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
+	print_cray(stack_b, argc - 1);
+	ps_sort_three(stack_a, argc - 1, 'a');
+	//print_cray(stack_a, argc - 1);
 }
 
 

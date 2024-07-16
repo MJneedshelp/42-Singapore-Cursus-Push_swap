@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 14:37:58 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 16:17:32 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 18:42:55 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_sorted(t_cray *cray, int arrsz)
 	i = 0;
 	while (i < arrsz)
 	{
-		if (cray->stack[cray->headidx + i] != i)
+		if (cray->stack[(cray->headidx + i) % arrsz] != i)
 			return (0);
 		i++;
 	}
