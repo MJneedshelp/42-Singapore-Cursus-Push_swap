@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/11 19:56:20 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 11:44:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,18 @@ void	rotate_to_head(t_cray *stk, int arrsz, int index)
    5. Push all elements back to stack A
 
 */
-void	ps_insertion_sort(t_cray *stack_a, t_cray stack_b, int arrsz)
+void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
+	int	smallest_index;
+
 	while (stack_b->count < arrsz)
 	{
-		smallest_index = find_least(stack_a, aarrsz);
+		smallest_index = find_least(stack_a, arrsz);
 		rotate_to_head(stack_a, arrsz, smallest_index);
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
 	}
 	while (stack_a->count < arrsz)
-		ps_push_stack(stack_a, stack_b, arrsz, 'a');
+		ps_push_stack(stack_b, stack_a, arrsz, 'a');
 }
 
 

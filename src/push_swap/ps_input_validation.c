@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:09:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/11 10:40:26 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 16:17:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../../include/push_swap.h"
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
-
 
 /* Description: Takes in a string and checks if all characters are digits.
    - Allows for ' ', '\t', '\r', at the start of the string.
@@ -49,7 +48,7 @@ int	check_numeric(char *str)
 		- 0: contains duplicates
    */
 
-int check_duplicate(int *arr, int arrsz)
+int	check_duplicate(int *arr, int arrsz)
 {
 	int	i;
 	int	j;
@@ -73,7 +72,7 @@ int check_duplicate(int *arr, int arrsz)
    numbers, and an integer value: least. Returns the index of the next smallest
    element after least.
 */
-int	find_next_least(int *arr, int arrsz, int least)
+int	find_next_least(int *arr, int arrsz, long least)
 {
 	int	retidx;
 	int	i;
@@ -94,10 +93,12 @@ int	find_next_least(int *arr, int arrsz, int least)
 	return (retidx);
 }
 
-/* Description: Takes in an array of integers, which can contain negative numbers,
-   and converts all the integers to positive integers starting with 0. The
-   relative positions the integers in the original array is preserved.
+/* Description: Takes in an array of integers, which can contain negative 
+   numbers and converts all the integers to positive integers starting 
+   with 0. The relative positions the integers in the original array is 
+   preserved.
 */
+
 int	*simplify_arr(int *arr, int arrsz)
 {
 	int		*ret;
@@ -106,7 +107,7 @@ int	*simplify_arr(int *arr, int arrsz)
 	int		i;
 
 	i = 0;
-	least = INT_MIN;
+	least = (long)INT_MIN - 1;
 	ret = (int *)malloc(arrsz * sizeof(int));
 	if (ret == NULL)
 		return (NULL);
@@ -120,10 +121,6 @@ int	*simplify_arr(int *arr, int arrsz)
 	free(arr);
 	return (ret);
 }
-
-
-
-
 
 /* Description: validates the incoming arguments received in main.
    - input: argc, argv[]
@@ -161,24 +158,16 @@ int	*ps_input_validation(int argc, char *argv[])
 	return (ret);
 }
 
-
-
-
-
-
-
-
-
-
 // Testing for input validation
-
+/*
 int	main(int argc, char *argv[])
 {
 	int	*arr;
+	int	*arr2;
 	int	i;
 	int	j;
-	int	least;
 
+	printf("Test: %s\n", argv[1]);
 	arr = ps_input_validation(argc, argv);
 	i = 0;
 	j = 0;
@@ -192,12 +181,12 @@ int	main(int argc, char *argv[])
 		}
 	}
 	//printf("Index of least: %d\n", find_next_least(arr, argc - 1, -11));
-	arr = simplify_arr(arr, argc - 1);
-	printf("Simplified Arr: %p\n", arr);
+	arr2 = simplify_arr(arr, argc - 1);
+	printf("Simplified Arr: %p\n", arr2);
 	while (j < argc - 1)
 	{
-		printf("Simplified arr: %d\n", arr[j]);
+		printf("Simplified arr: %d\n", arr2[j]);
 		j++;
 	}
 }
-
+*/

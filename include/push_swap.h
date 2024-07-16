@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:42:24 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/09 18:51:35 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 15:21:11 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 int		find_least(t_cray *cray, int arrsz);
 int		find_dist(int arrsz, int from, int to);
+int		check_sorted(t_cray *cray, int arrsz);
 
 /* push_swap Operations Utilities */
 void	swap(t_cray *cray, int arrsz);
@@ -58,7 +59,7 @@ t_cray	*ps_init_stack(int arrsz, int *arr);
 
 /* Sort Utilities*/
 void	rotate_to_head(t_cray *stk, int arrsz, int index);
-void	ps_insertion_sort(t_cray *stack_a, t_cray stack_b, int arrsz);
+void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 21:56:37 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/11 19:56:34 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/16 09:09:08 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
+/*
 int	main(void)
 {
 	t_cray	*cray1;
@@ -101,3 +102,4 @@ int	main(void)
 	printf("Index of smallest element for cray1: %d\n", sort_utils_find_least(cray1, arrsz));	
 	printf("Index of smallest element for cray2: %d\n", sort_utils_find_least(cray2, arrsz));	
 }
+*/
