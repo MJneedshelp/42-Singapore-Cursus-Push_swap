@@ -93,9 +93,9 @@ int	find_next_least(int *arr, int arrsz, long least)
 	return (retidx);
 }
 
-/* Description: Takes in an array of integers, which can contain negative 
-   numbers and converts all the integers to positive integers starting 
-   with 0. The relative positions the integers in the original array is 
+/* Description: Takes in an array of integers, which can contain negative
+   numbers and converts all the integers to positive integers starting
+   with 0. The relative positions the integers in the original array is
    preserved.
 */
 
@@ -107,7 +107,10 @@ int	*simplify_arr(int *arr, int arrsz)
 	int		i;
 
 	i = 0;
-	least = (long)INT_MIN - 1;
+	//use this in for real
+	//least = (long)INT_MIN - 1;
+	//use this in vscode
+	least = INT_MIN;
 	ret = (int *)malloc(arrsz * sizeof(int));
 	if (ret == NULL)
 		return (NULL);
