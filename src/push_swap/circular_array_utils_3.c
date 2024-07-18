@@ -41,31 +41,36 @@ int	check_sorted(t_cray *cray, int arrsz)
 	return (1);
 }
 
-/* Description: Finds the biggest element in a circular array that is smaller
-   than the given value and returns the index of the element.
+/* Description: Finds the distance between 2 elements in a circular array.
+   Usually used to find the distance between an element and the head or tail
+   of the circular array.
 */
 
-int	find_next_max(t_cray *cray, int arrsz, int max)
+int	find_dist(int arrsz, int from, int to)
 {
-	int	hdidx;
-	int	next_max;
-	int	retidx;
-	int	i;
+	int	dist;
 
-	i = 0;
-	next_max = -1;
-	hdidx = cray->headidx;
-	while (i < cray->count)
-	{
-		if (cray->stack[(hdidx + i) % arrsz] < max && \
-		cray->stack[(hdidx + i) % arrsz] > next_max)
-		{
-			next_max = cray->stack[(hdidx + i) % arrsz];
-			retidx = (hdidx + i) % arrsz;
-		}
-		i++;
-	}
-	return (retidx);
+	dist = (to - from + arrsz) % arrsz;
+	return (dist);
+}
+
+/* Description: Finds out if an element is closer to the head or tail of
+   a circular array by finding the distance of the element to the head or
+   tail.
+   Return:
+   - 1: Distance to head <= distance to tail + 1
+   - 0: Distance to head > distance to tail + 1
+*/
+int	head_or_tail(t_cray *cray, int arrsz, int index)
+{
+	int	dist_to_head;
+	int	dist_to_tail;
+
+	dist_to_head = find_dist(arrsz, cray->headidx, index);
+	dist_to_tail = find_dist(arrsz, index, cray->tailidx);
+	if (dist_to_head <= dist_to_head)
+		return (1);
+	return (0);
 }
 
 

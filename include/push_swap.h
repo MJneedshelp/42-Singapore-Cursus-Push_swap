@@ -16,6 +16,7 @@
 //Maybe remove this afterwards
 # include <stdio.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
 
@@ -38,7 +39,9 @@ int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 int		find_min(t_cray *cray, int arrsz);
 int		find_max(t_cray *cray, int arrsz);
+int		find_next_max(t_cray *cray, int arrsz, int max);
 int		find_dist(int arrsz, int from, int to);
+int		head_or_tail(t_cray *cray, int arrsz, int index);
 int		check_sorted(t_cray *cray, int arrsz);
 
 /* push_swap Operations Utilities */
@@ -62,6 +65,17 @@ void	ps_sort_three(t_cray *stack, int arrsz, char c);
 /* Sort Utilities*/
 void	rotate_to_head(t_cray *stk, int arrsz, int index);
 void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
+
+/* Turk sort steps */
+int	find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int	ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int	ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int	ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int	ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+
+
+
+
 
 
 #endif

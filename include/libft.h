@@ -24,7 +24,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-/* Validation Functions*/
+/* Comparison Functions */
+int		ft_least(int int1, int int2, int int3);
+
+/* Validation Functions */
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

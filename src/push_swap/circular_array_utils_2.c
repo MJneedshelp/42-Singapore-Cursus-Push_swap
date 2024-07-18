@@ -103,17 +103,31 @@ int	find_max(t_cray *cray, int arrsz)
 	return (retidx);
 }
 
-/* Description: Finds the distance between 2 elements in a circular array.
-   Usually used to find the distance between an element and the head or tail
-   of the circular array.
+/* Description: Finds the biggest element in a circular array that is smaller
+   than the given value and returns the index of the element.
 */
 
-int	find_dist(int arrsz, int from, int to)
+int	find_next_max(t_cray *cray, int arrsz, int max)
 {
-	int	dist;
+	int	hdidx;
+	int	next_max;
+	int	retidx;
+	int	i;
 
-	dist = (to - from + arrsz) % arrsz;
-	return (dist);
+	i = 0;
+	next_max = -1;
+	hdidx = cray->headidx;
+	while (i < cray->count)
+	{
+		if (cray->stack[(hdidx + i) % arrsz] < max && \
+		cray->stack[(hdidx + i) % arrsz] > next_max)
+		{
+			next_max = cray->stack[(hdidx + i) % arrsz];
+			retidx = (hdidx + i) % arrsz;
+		}
+		i++;
+	}
+	return (retidx);
 }
 
 

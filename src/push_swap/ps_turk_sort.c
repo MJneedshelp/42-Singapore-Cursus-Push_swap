@@ -47,29 +47,46 @@
 		- push from B to A
 */
 
-//function: calculate cost
-	//
-//function: find target element_less (next smaller elm in stack): given value for comparison
-//function: find target element_more (next bigger elm in stack): given value for comparison
+
+
+
+
+
+
 
 /* Description: Calculates the cost of moving an element from Stack A to
    Stack B given the index of element in Stack A
-   1. Checks if the element is the new min in Stack B
-   2.
+   1. Finds the target element in Stack B
+   2. Calculates the cost of moving the element in Stack A on top of the element in Stack B
 */
 int	ps_ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
+	int	cost;
 
-	if (stack_a->stack[a_idx] < find_min(stack_b, arrsz))	//elm is new min
-		b_target_idx = find_max(stack_b, arrsz);
-	else													//elm is not new min
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	if (head_or_tail(stack_a, arrsz, a_idx) == 1 && \
+	head_or_tail(stack_b, arrsz, b_target_idx) == 1)
+		cost = ts_cost_2hd(stack_a, stack_b, arrsz, a_idx);
+	else if (head_or_tail(stack_a, arrsz, a_idx) == 0 && \
+	head_or_tail(stack_b, arrsz, b_target_idx) == 0)
+		cost = ts_cost_2tl(stack_a, stack_b, arrsz, a_idx);
+	else if (head_or_tail(stack_a, arrsz, a_idx) == 1 && \
+	head_or_tail(stack_b, arrsz, b_target_idx) == 0)
 	{
-		b_target_idx = 
+		cost = ft_least(ts_cost_ahd_btl(stack_a, stack_b, arrsz, a_idx), \
+		ts_cost_2hd(stack_a, stack_b, arrsz, a_idx), \
+		ts_cost_2tl(stack_a, stack_b, arrsz, a_idx));
 	}
+	else if (head_or_tail(stack_a, arrsz, a_idx) == 0 && \
+	head_or_tail(stack_b, arrsz, b_target_idx) == 1)
+	{
+		cost = ft_least(ts_cost_atl_bhd(stack_a, stack_b, arrsz, a_idx), \
+		ts_cost_2hd(stack_a, stack_b, arrsz, a_idx), \
+		ts_cost_2tl(stack_a, stack_b, arrsz, a_idx));
+	}
+	return (cost);
 }
-
-
 
 /* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
