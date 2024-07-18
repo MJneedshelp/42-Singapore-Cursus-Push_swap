@@ -48,8 +48,7 @@
 */
 
 /* Description: Runs through each element in Stack A and calculates the cost of pushing them
-   to Stack B. Execute the steps only for the cheapest element in Stack A.
-   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   to Stack B. Returns the index of the first element in Stack A with the cheapest cost.
 */
 int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
