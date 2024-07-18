@@ -84,6 +84,7 @@ int	main(int argc, char *argv[])
 	int		*arr;
 	t_cray	*stack_a;
 	t_cray	*stack_b;
+	int		maxidx;
 
 	arr = ps_input_validation(argc, argv);
 	stack_a = ps_init_stack(argc - 1, arr);
@@ -92,8 +93,20 @@ int	main(int argc, char *argv[])
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
+	printf("1 rra and 1 pb and 2 rra\n");
+	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
+	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
+	print_cray(stack_a, argc - 1);
+	print_cray(stack_b, argc - 1);
 	ps_sort_three(stack_a, argc - 1, 'a');
-	//print_cray(stack_a, argc - 1);
+	print_cray(stack_a, argc - 1);
+	ps_rotate_stack(stack_a, argc - 1, 'a');
+	ps_swap_stack(stack_a, argc - 1, 'a');
+	print_cray(stack_a, argc - 1);
+	maxidx = find_max(stack_a, argc - 1);
+	printf("[stack A] max index: %d | max value: %d\n", maxidx, stack_a->stack[maxidx]);
 }
 
 

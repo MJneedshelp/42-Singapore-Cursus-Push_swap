@@ -29,7 +29,6 @@ void	ps_sort_three(t_cray *stack, int arrsz, char c)
 		head_val = stack->stack[stack->headidx];
 		mid_val = stack->stack[(stack->headidx + 1 + arrsz) % arrsz];
 		tail_val = stack->stack[stack->tailidx];
-		//printf("head: %d | mid: %d | tail: %d\n", head_val, stack->stack[stack->headidx + 1], tail_val);
 		if (mid_val > head_val && tail_val < head_val)
 			ps_rev_rotate_stack(stack, arrsz, c);
 		else if (head_val > mid_val && head_val > tail_val)

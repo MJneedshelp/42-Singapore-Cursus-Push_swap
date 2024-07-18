@@ -17,5 +17,6 @@ int main(int argc, char *argv[])
 {
 	printf("No. of arguments: %d\n", argc);
 	for(int i = 0; i < argc; i++)
-		printf("argument: %d | value: %s | strlen: %d\n", i, argv[i], ft_strlen(argv[i]));
+		printf("argument: %d | value: %s\n", i, argv[i]);
 }
+11

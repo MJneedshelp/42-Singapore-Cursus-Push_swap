@@ -99,7 +99,7 @@ int	main(void)
 	printf("rotate cray2\n");
 	ps_rotate_stack(cray2, arrsz, '2');
 	print_cray(cray2, arrsz);
-	printf("Index of smallest element for cray1: %d\n", sort_utils_find_least(cray1, arrsz));	
-	printf("Index of smallest element for cray2: %d\n", sort_utils_find_least(cray2, arrsz));	
+	printf("Index of smallest element for cray1: %d\n", sort_utils_find_min(cray1, arrsz));	
+	printf("Index of smallest element for cray2: %d\n", sort_utils_find_min(cray2, arrsz));	
 }
 */

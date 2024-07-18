@@ -36,7 +36,8 @@ void	add_itm_hd(t_cray *cray, int val, int arrsz);
 int		rm_itm_hd(t_cray *cray, int arrsz);
 int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
-int		find_least(t_cray *cray, int arrsz);
+int		find_min(t_cray *cray, int arrsz);
+int		find_max(t_cray *cray, int arrsz);
 int		find_dist(int arrsz, int from, int to);
 int		check_sorted(t_cray *cray, int arrsz);
 

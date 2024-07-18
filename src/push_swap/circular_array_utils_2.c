@@ -53,22 +53,49 @@ int	rm_itm_tl(t_cray *cray, int arrsz)
    the index of the element.
 */
 
-int	find_least(t_cray *cray, int arrsz)
+int	find_min(t_cray *cray, int arrsz)
 {
 	int	hdidx;
-	int	lowest;
+	int	min;
 	int	retidx;
 	int	i;
 
 	i = 0;
-	lowest = cray->stack[cray->headidx];
+	min = cray->stack[cray->headidx];
 	hdidx = cray->headidx;
 	retidx = cray->headidx;
 	while (i < cray->count - 1)
 	{
-		if (cray->stack[(hdidx + i + 1) % arrsz] < lowest)
+		if (cray->stack[(hdidx + i + 1) % arrsz] < min)
 		{
-			lowest = cray->stack[(hdidx + i + 1) % arrsz];
+			min = cray->stack[(hdidx + i + 1) % arrsz];
+			retidx = (hdidx + i + 1) % arrsz;
+		}
+		i++;
+	}
+	return (retidx);
+}
+
+/* Description: Finds the biggest element in a circular array and returns
+   the index of the element.
+*/
+
+int	find_max(t_cray *cray, int arrsz)
+{
+	int	hdidx;
+	int	max;
+	int	retidx;
+	int	i;
+
+	i = 0;
+	max = cray->stack[cray->headidx];
+	hdidx = cray->headidx;
+	retidx = cray->headidx;
+	while (i < cray->count - 1)
+	{
+		if (cray->stack[(hdidx + i + 1) % arrsz] > max)
+		{
+			max = cray->stack[(hdidx + i + 1) % arrsz];
 			retidx = (hdidx + i + 1) % arrsz;
 		}
 		i++;
@@ -92,29 +119,6 @@ int	find_dist(int arrsz, int from, int to)
 
 
 
-
-/* Description: Prints the circular array starting from the head index to the
-   tail index. Only prints out the number of items in the circular array and
-   not all the items in the array by using the count.
-*/
-
-// SWITCH OUT THE PRINTF LATER WITH YOUR OWN PRINTF
-
-void	print_cray(t_cray *cray, int arrsz)
-{
-	int	start;
-	int	count;
-
-	start = cray->headidx;
-	count = 0;
-	printf("Arrsz: %d | No. items: %d | Head index: %d | Tail index: %d\n", arrsz, cray->count, cray->headidx, cray->tailidx);
-	while (count < cray->count)
-	{
-		printf("%d\n", cray->stack[start]);
-		start = (start + 1) % arrsz;
-		count++;
-	}
-}
 
 
 
