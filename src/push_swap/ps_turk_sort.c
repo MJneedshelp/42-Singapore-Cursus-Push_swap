@@ -47,8 +47,32 @@
 		- push from B to A
 */
 
+/* Description: Runs through each element in Stack A and calculates the cost of pushing them
+   to Stack B. Execute the steps only for the cheapest element in Stack A.
+   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+*/
+int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
+{
+	int	i;
+	int	cheapest_idx;
+	int	min;
+	int	st;
 
-
+	i = 0;
+	st = stack_a->headidx;
+	cheapest_idx = st;
+	min = ts_calc_cost(stack_a, stack_b, arrsz, st);
+	while (i < stack_a->count - 1)
+	{
+		if (ts_calc_cost(stack_a, stack_b, arrsz, (st + i + 1) % arrsz) < min)
+		{
+			cheapest_idx = (st + i + 1) % arrsz;
+			min = ts_calc_cost(stack_a, stack_b, arrsz, (st + i + 1) % arrsz);
+		}
+		i++;
+	}
+	return (cheapest_idx);
+}
 
 
 
@@ -59,7 +83,7 @@
    1. Finds the target element in Stack B
    2. Calculates the cost of moving the element in Stack A on top of the element in Stack B
 */
-int	ps_ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+int	ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
 	int	cost;
