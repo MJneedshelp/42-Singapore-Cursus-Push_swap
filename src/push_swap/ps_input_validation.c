@@ -108,9 +108,9 @@ int	*simplify_arr(int *arr, int arrsz)
 
 	i = 0;
 	//use this in for real
-	least = (long)INT_MIN - 1;
+	//least = (long)INT_MIN - 1;
 	//use this in vscode at home
-	//least = INT_MIN;
+	least = INT_MIN;
 	ret = (int *)malloc(arrsz * sizeof(int));
 	if (ret == NULL)
 		return (NULL);
@@ -126,7 +126,7 @@ int	*simplify_arr(int *arr, int arrsz)
 }
 
 /* Description: validates the incoming arguments received in main. Simplifies
-   the resulting array by converting everything to positive integers and 
+   the resulting array by converting everything to positive integers and
    maintaining the relative positions of the elements: [0, N).
    - input: argc, argv[]
    - return:

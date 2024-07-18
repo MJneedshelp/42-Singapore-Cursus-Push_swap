@@ -41,6 +41,33 @@ int	check_sorted(t_cray *cray, int arrsz)
 	return (1);
 }
 
+/* Description: Finds the biggest element in a circular array that is smaller
+   than the given value and returns the index of the element.
+*/
+
+int	find_next_max(t_cray *cray, int arrsz, int max)
+{
+	int	hdidx;
+	int	next_max;
+	int	retidx;
+	int	i;
+
+	i = 0;
+	next_max = -1;
+	hdidx = cray->headidx;
+	while (i < cray->count)
+	{
+		if (cray->stack[(hdidx + i) % arrsz] < max && \
+		cray->stack[(hdidx + i) % arrsz] > next_max)
+		{
+			next_max = cray->stack[(hdidx + i) % arrsz];
+			retidx = (hdidx + i) % arrsz;
+		}
+		i++;
+	}
+	return (retidx);
+}
+
 
 /* Description: Prints the circular array starting from the head index to the
    tail index. Only prints out the number of items in the circular array and
@@ -68,7 +95,7 @@ void	print_cray(t_cray *cray, int arrsz)
 
 
 //Testing
-/*
+
 int	main(int argc, char *argv[])
 {
 	int		*arr;
@@ -84,16 +111,16 @@ int	main(int argc, char *argv[])
 	print_cray(stack_b, argc - 1);
 	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
 	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_rotate_stack(stack_a, argc - 1, 'a');
+	ps_rotate_stack(stack_a, argc - 1, 'a');
 	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
+	printf("Find next max smaller than 3 in stack A. Index: %d | value: %d\n", find_next_max(stack_a, argc - 1, 3), stack_a->stack[find_next_max(stack_a, argc - 1, 3)]);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
-	printf("Check sorted A: %d\n", check_sorted(stack_a, argc - 1));
-	printf("Check sorted B: %d\n", check_sorted(stack_b, argc - 1));
-	ps_sort_three(stack_a, argc - 1, 'a');
-	printf("Stack A\n");
-	print_cray(stack_a, argc - 1);
+	printf("Find next max smaller than 7 in stack B. Index: %d | value: %d\n", find_next_max(stack_b, argc - 1, 7), stack_b->stack[find_next_max(stack_b, argc - 1, 7)]);
 }
-*/
+
 
 

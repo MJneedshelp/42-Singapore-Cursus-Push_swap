@@ -23,7 +23,7 @@
 			- check if the elememt is the new min in stack B
 				- target element in stack b: current max in stack B
 			- Not new min
-				- target element in stack b: the next smallest element after 
+				- target element in stack b: the next smallest element after
 				the current element in stack A (works even if the element in A
 				is the biggest)
 			- Cost: (no. steps to move elm in A to top) + (no. steps to move elm in B to top)
@@ -52,17 +52,28 @@
 //function: find target element_less (next smaller elm in stack): given value for comparison
 //function: find target element_more (next bigger elm in stack): given value for comparison
 
-/* Description: Calculates the cost of moving an element from Stack A to 
+/* Description: Calculates the cost of moving an element from Stack A to
    Stack B given the index of element in Stack A
    1. Checks if the element is the new min in Stack B
-   2. 
+   2.
 */
+int	ps_ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+
+	if (stack_a->stack[a_idx] < find_min(stack_b, arrsz))	//elm is new min
+		b_target_idx = find_max(stack_b, arrsz);
+	else													//elm is not new min
+	{
+		b_target_idx = 
+	}
+}
 
 
 
 /* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
-void	ps_turk_sort(t_cray stack_a, t_cray stack_b, int arrsz)
+void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
 	if (arrsz <= 5)
 	// perform sorting for 5 or less
