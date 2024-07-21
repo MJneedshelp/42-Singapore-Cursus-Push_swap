@@ -73,6 +73,7 @@ int	ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int	ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int	ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 
+int	ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int	ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz);
 
