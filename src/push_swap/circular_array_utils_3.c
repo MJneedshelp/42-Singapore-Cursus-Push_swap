@@ -68,7 +68,7 @@ int	head_or_tail(t_cray *cray, int arrsz, int index)
 
 	dist_to_head = find_dist(arrsz, cray->headidx, index);
 	dist_to_tail = find_dist(arrsz, index, cray->tailidx);
-	if (dist_to_head <= dist_to_head)
+	if (dist_to_head <= dist_to_tail)
 		return (1);
 	return (0);
 }
@@ -100,7 +100,7 @@ void	print_cray(t_cray *cray, int arrsz)
 
 
 //Testing
-
+/*
 int	main(int argc, char *argv[])
 {
 	int		*arr;
@@ -126,6 +126,7 @@ int	main(int argc, char *argv[])
 	print_cray(stack_b, argc - 1);
 	printf("Find next max smaller than 7 in stack B. Index: %d | value: %d\n", find_next_max(stack_b, argc - 1, 7), stack_b->stack[find_next_max(stack_b, argc - 1, 7)]);
 }
+*/
 
 
 

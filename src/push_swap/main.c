@@ -84,8 +84,9 @@ int	main(int argc, char *argv[])
 	int		*arr;
 	t_cray	*stack_a;
 	t_cray	*stack_b;
-	int		maxidx;
+	int		i;
 
+	i = 0;
 	arr = ps_input_validation(argc, argv);
 	stack_a = ps_init_stack(argc - 1, arr);
 	stack_b = ps_init_stack(argc - 1, NULL);
@@ -93,20 +94,37 @@ int	main(int argc, char *argv[])
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
-	printf("1 rra and 1 pb and 2 rra\n");
-	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
 	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
-	ps_rev_rotate_stack(stack_a, argc - 1, 'a');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
+	ps_rotate_stack(stack_b, argc - 1, 'b');
+	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
-	ps_sort_three(stack_a, argc - 1, 'a');
-	print_cray(stack_a, argc - 1);
-	ps_rotate_stack(stack_a, argc - 1, 'a');
-	ps_swap_stack(stack_a, argc - 1, 'a');
-	print_cray(stack_a, argc - 1);
-	maxidx = find_max(stack_a, argc - 1);
-	printf("[stack A] max index: %d | max value: %d\n", maxidx, stack_a->stack[maxidx]);
+	//printf("Min stack B | Index: %d | Val: %d\n", find_min(stack_b, argc - 1), stack_b->stack[find_min(stack_b, argc - 1)]);
+	//printf("Max stack B | Index: %d | Val: %d\n", find_max(stack_b, argc - 1), stack_b->stack[find_max(stack_b, argc - 1)]);
+	while (i < stack_a->count)
+	{
+		printf("A Elm: %d | Target B val: %d | 2 hd cost: %d | 2 tl cost: %d | ahd, btl: %d | atl, bhd: %d | final cost: %d\n", \
+		stack_a->stack[(stack_a->headidx + i) % (argc - 1)], \
+		stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1))], \
+		ts_cost_2hd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+		ts_cost_2tl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+		ts_cost_ahd_btl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+		ts_cost_atl_bhd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+		ts_calc_cost(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)));
+		i++;
+	}
+	printf("Cheapest to push from A. Idx: %d | Val: %d\n", ts_find_cheapest(stack_a, stack_b, argc - 1), stack_a->stack[ts_find_cheapest(stack_a, stack_b, argc - 1)]);
+	
+	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[3], find_target_b(stack_a, stack_b, argc - 1, 3), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 3)]);
+	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[4], find_target_b(stack_a, stack_b, argc - 1, 4), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 4)]);
+	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[7], find_target_b(stack_a, stack_b, argc - 1, 7), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 7)]);
+	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[11], find_target_b(stack_a, stack_b, argc - 1, 11), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 11)]);
+
+
+
 }
 
 

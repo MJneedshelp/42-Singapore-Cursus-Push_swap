@@ -17,13 +17,13 @@
 /* Description: Finds the target index in Stack B given the element in Stack A.
    If the element in Stack A is smaller than the minimum in Stack B, the target
    element in Stack B is the max element.
-   Else, the target element in Stack B is the closet largest element.
+   Else, the target element in Stack B is the next largest element.
 */
 int	find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
 
-	if (stack_a->stack[a_idx] < find_min(stack_b, arrsz))
+	if (stack_a->stack[a_idx] < stack_b->stack[find_min(stack_b, arrsz)])
 		b_target_idx = find_max(stack_b, arrsz);
 	else
 		b_target_idx = find_next_max(stack_b, arrsz, stack_a->stack[a_idx]);

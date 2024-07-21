@@ -55,7 +55,7 @@ void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 
 	while (stack_b->count < arrsz)
 	{
-		smallest_index = find_least(stack_a, arrsz);
+		smallest_index = find_min(stack_a, arrsz);
 		rotate_to_head(stack_a, arrsz, smallest_index);
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
 	}
