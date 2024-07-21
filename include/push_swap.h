@@ -67,15 +67,20 @@ void	rotate_to_head(t_cray *stk, int arrsz, int index);
 void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
 
 /* Turk sort steps */
-int	find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 
-int	ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz);
+int		ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz);
+void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+void	ts_bring_top_tt(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+void	ts_bring_top_ht(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+
 
 
 

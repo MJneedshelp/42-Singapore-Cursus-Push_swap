@@ -29,7 +29,7 @@ void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
 	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
 	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
-	while (a_dist != 0 || b_dist != 0)
+	while (a_dist != 0 && b_dist != 0)
 	{
 		ps_rotate_both(stack_a, stack_b, arrsz);
 		a_dist--;
@@ -47,6 +47,7 @@ void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 	}
 }
 
+
 /* Description: Moves an element from Stack A and its target element in Stack B
    to the top of their respective stacks by rotating both stacks. This function
    is executed when both the element from Stack A and its target element in
@@ -55,7 +56,29 @@ void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 
 void	ts_bring_top_tt(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
+	int	b_target_idx;
+	int	a_dist;
+	int	b_dist;
 
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
+	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
+	while (a_dist != 0 && b_dist != 0)
+	{
+		ps_rev_rotate_both(stack_a, stack_b, arrsz);
+		a_dist--;
+		b_dist--;
+	}
+	while (a_dist != 0)
+	{
+		ps_rev_rotate_stack(stack_a, arrsz, 'a');
+		a_dist--;
+	}
+	while (b_dist != 0)
+	{
+		ps_rev_rotate_stack(stack_b, arrsz, 'b');
+		b_dist--;
+	}
 }
 
 /* Description: Moves an element from Stack A and its target element in Stack B
@@ -66,7 +89,23 @@ void	ts_bring_top_tt(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 
 void	ts_bring_top_ht(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
+	int	b_target_idx;
+	int	a_dist;
+	int	b_dist;
 
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
+	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
+	while (a_dist != 0)
+	{
+		ps_rotate_stack(stack_a, arrsz, 'a');
+		a_dist--;
+	}
+	while (b_dist != 0)
+	{
+		ps_rev_rotate_stack(stack_b, arrsz, 'b');
+		b_dist--;
+	}
 }
 
 /* Description: Moves an element from Stack A and its target element in Stack B
@@ -77,46 +116,50 @@ void	ts_bring_top_ht(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 
 void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
-
-}
-
-
-
-
-
-
-
-
-
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks:
-   1. Finds the target element in Stack B
-   2. Execute the push_swap operations based on the elements' closenest to their
-   stacks' head or tail
-*/
-
-void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-{
 	int	b_target_idx;
-	int	scenario;
+	int	a_dist;
+	int	b_dist;
 
 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
-	if (scenario == 1)
-
-	else if (scenario == 2)
-
-	else if (scenario == 3)
+	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
+	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
+	while (a_dist != 0)
 	{
-
+		ps_rev_rotate_stack(stack_a, arrsz, 'a');
+		a_dist--;
 	}
-	else
+	while (b_dist != 0)
 	{
-
+		ps_rotate_stack(stack_b, arrsz, 'b');
+		b_dist--;
 	}
 }
 
 
+// /* Description: Moves an element from Stack A and its target element in Stack B
+//    to the top of their respective stacks:
+//    1. Finds the target element in Stack B
+//    2. Execute the push_swap operations based on the elements' closenest to their
+//    stacks' head or tail
+// */
 
+// void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+// {
+// 	int	b_target_idx;
+// 	int	scenario;
 
+// 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+// 	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
+// 	if (scenario == 1)
 
+// 	else if (scenario == 2)
+
+// 	else if (scenario == 3)
+// 	{
+
+// 	}
+// 	else
+// 	{
+
+// 	}
+// }

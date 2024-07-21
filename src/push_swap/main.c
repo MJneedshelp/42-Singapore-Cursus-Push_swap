@@ -117,6 +117,23 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	printf("Cheapest to push from A. Idx: %d | Val: %d\n", ts_find_cheapest(stack_a, stack_b, argc - 1), stack_a->stack[ts_find_cheapest(stack_a, stack_b, argc - 1)]);
+	//ts_bring_top_hh(stack_a, stack_b, argc - 1, stack_a->tailidx);
+	ts_bring_top_tt(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
+	printf("Stack A\n");
+	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
+	print_cray(stack_b, argc - 1);
+	ts_bring_top_ht(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
+	printf("Stack A\n");
+	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
+	print_cray(stack_b, argc - 1);
+	ts_bring_top_th(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
+	printf("Stack A\n");
+	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
+	print_cray(stack_b, argc - 1);
+
 	
 	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[3], find_target_b(stack_a, stack_b, argc - 1, 3), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 3)]);
 	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[4], find_target_b(stack_a, stack_b, argc - 1, 4), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 4)]);
