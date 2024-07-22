@@ -59,7 +59,7 @@
 int	ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
-	
+
 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
 	if (head_or_tail(stack_a, arrsz, a_idx) == 1 && \
 	head_or_tail(stack_b, arrsz, b_target_idx) == 1)
@@ -139,9 +139,11 @@ int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 /* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
 
-/*
+
 void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
+	int	cheapest_idx;
+
 	if (arrsz <= 5)
 	// perform sorting for 5 or less
 	else
@@ -150,8 +152,9 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
 		while (stack_a->count > 3)
 		{
-			//push cheapest to B
-			//calculate cost + push b
+			cheapest_idx = ts_find_cheapest(stack_a, stack_b, arrsz);
+			ts_bring_top(stack_a, stack_b, arrsz, cheapest_idx);
+			ps_push_stack(stack_a, stack_b, arrsz, 'b');
 		}
 		ps_sort_three(stack_a, arrsz, 'a');
 		while (stack_b->count > 0)
@@ -162,7 +165,7 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 			rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz));
 	}
 }
-*/
+
 
 
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_turk_sort_pushb.c                               :+:      :+:    :+:   */
+/*   ps_turk_sort_pushb_1.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -136,30 +136,33 @@ void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 }
 
 
-// /* Description: Moves an element from Stack A and its target element in Stack B
-//    to the top of their respective stacks:
-//    1. Finds the target element in Stack B
-//    2. Execute the push_swap operations based on the elements' closenest to their
-//    stacks' head or tail
-// */
+/* Description: Moves an element from Stack A and its target element in Stack B
+   to the top of their respective stacks:
+   1. Finds the target element in Stack B
+   2. Execute the push_swap operations based on the elements' closenest to their
+   stacks' head or tail
+*/
 
-// void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-// {
-// 	int	b_target_idx;
-// 	int	scenario;
+void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+	int	scenario;
 
-// 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-// 	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
-// 	if (scenario == 1)
-
-// 	else if (scenario == 2)
-
-// 	else if (scenario == 3)
-// 	{
-
-// 	}
-// 	else
-// 	{
-
-// 	}
-// }
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
+	if (scenario == 1)
+		ts_bring_top_hh(stack_a, stack_b, arrsz, a_idx);
+	else if (scenario == 2)
+		ts_bring_top_tt(stack_a, stack_b, arrsz, a_idx);
+	else
+	{
+		if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 1)
+			ts_bring_top_ht(stack_a, stack_b, arrsz, a_idx);
+		else if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 2)
+			ts_bring_top_th(stack_a, stack_b, arrsz, a_idx);
+		else if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 3)
+			ts_bring_top_hh(stack_a, stack_b, arrsz, a_idx);
+		else
+			ts_bring_top_tt(stack_a, stack_b, arrsz, a_idx);
+	}
+}
