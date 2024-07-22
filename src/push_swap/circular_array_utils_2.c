@@ -107,22 +107,22 @@ int	find_max(t_cray *cray, int arrsz)
    than the given value and returns the index of the element.
 */
 
-int	find_next_max(t_cray *cray, int arrsz, int max)
+int	find_prev_max(t_cray *cray, int arrsz, int max)
 {
 	int	hdidx;
-	int	next_max;
+	int	prev_max;
 	int	retidx;
 	int	i;
 
 	i = 0;
-	next_max = -1;
+	prev_max = -1;
 	hdidx = cray->headidx;
 	while (i < cray->count)
 	{
 		if (cray->stack[(hdidx + i) % arrsz] < max && \
 		cray->stack[(hdidx + i) % arrsz] > next_max)
 		{
-			next_max = cray->stack[(hdidx + i) % arrsz];
+			prev_max = cray->stack[(hdidx + i) % arrsz];
 			retidx = (hdidx + i) % arrsz;
 		}
 		i++;

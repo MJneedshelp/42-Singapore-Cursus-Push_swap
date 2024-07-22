@@ -39,7 +39,8 @@ int		rm_itm_tl(t_cray *cray, int arrsz);
 void	print_cray(t_cray *cray, int arrsz);
 int		find_min(t_cray *cray, int arrsz);
 int		find_max(t_cray *cray, int arrsz);
-int		find_next_max(t_cray *cray, int arrsz, int max);
+int		find_prev_max(t_cray *cray, int arrsz, int max);
+
 int		find_dist(int arrsz, int from, int to);
 int		head_or_tail(t_cray *cray, int arrsz, int index);
 int		check_sorted(t_cray *cray, int arrsz);

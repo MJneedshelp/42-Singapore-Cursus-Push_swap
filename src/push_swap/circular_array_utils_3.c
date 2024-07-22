@@ -14,6 +14,40 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
+/* Description: Finds the closest element in a circular array that is bigger
+   than the given value and returns the index of the element.
+*/
+
+int	find_next_max(t_cray *cray, int arrsz, int max)
+{
+	int	hdidx;
+	int	next_max;
+	int	retidx;
+	int	i;
+
+	i = 0;
+	next_max = -1;
+	hdidx = cray->headidx;
+	while (i < cray->count)
+	{
+		if (cray->stack[(hdidx + i) % arrsz] > max && \
+		cray->stack[(hdidx + i) % arrsz] < next_max)
+		{
+			next_max = cray->stack[(hdidx + i) % arrsz];
+			retidx = (hdidx + i) % arrsz;
+		}
+		i++;
+	}
+	return (retidx);
+}
+
+
+
+
+
+
+
+
 /* Description: Takes in a circular array of integers and checks if the elements
    in the array are sorted in ascending order starting from the head. The
    elements in the array should already be simplified [0, N). The circular array

@@ -14,155 +14,96 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks by rotating both stacks. This function
-   is executed when both the element from Stack A and its target element in
-   Stack B are closer to their respective heads.
+/* Description: Finds the target index in Stack B given the element in Stack A.
+   If the element in Stack A is smaller than the minimum in Stack B, the target
+   element in Stack B is the max element.
+   Else, the target element in Stack B is the closest largest element that is
+   smaller than the element in Stack A.
 */
-
-void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+int	find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
-	int	a_dist;
-	int	b_dist;
 
-	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
-	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
-	while (a_dist != 0 && b_dist != 0)
-	{
-		ps_rotate_both(stack_a, stack_b, arrsz);
-		a_dist--;
-		b_dist--;
-	}
-	while (a_dist != 0)
-	{
-		ps_rotate_stack(stack_a, arrsz, 'a');
-		a_dist--;
-	}
-	while (b_dist != 0)
-	{
-		ps_rotate_stack(stack_b, arrsz, 'b');
-		b_dist--;
-	}
-}
-
-
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks by rotating both stacks. This function
-   is executed when both the element from Stack A and its target element in
-   Stack B are closer to their respective tails.
-*/
-
-void	ts_bring_top_tt(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-{
-	int	b_target_idx;
-	int	a_dist;
-	int	b_dist;
-
-	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
-	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
-	while (a_dist != 0 && b_dist != 0)
-	{
-		ps_rev_rotate_both(stack_a, stack_b, arrsz);
-		a_dist--;
-		b_dist--;
-	}
-	while (a_dist != 0)
-	{
-		ps_rev_rotate_stack(stack_a, arrsz, 'a');
-		a_dist--;
-	}
-	while (b_dist != 0)
-	{
-		ps_rev_rotate_stack(stack_b, arrsz, 'b');
-		b_dist--;
-	}
-}
-
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks by rotating both stacks. This function
-   is executed when the element from Stack A is closer to its head while its
-   target element in Stack B is closer to its tail.
-*/
-
-void	ts_bring_top_ht(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-{
-	int	b_target_idx;
-	int	a_dist;
-	int	b_dist;
-
-	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
-	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
-	while (a_dist != 0)
-	{
-		ps_rotate_stack(stack_a, arrsz, 'a');
-		a_dist--;
-	}
-	while (b_dist != 0)
-	{
-		ps_rev_rotate_stack(stack_b, arrsz, 'b');
-		b_dist--;
-	}
-}
-
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks by rotating both stacks. This function
-   is executed when the element from Stack A is closer to its tail while its
-   target element in Stack B is closer to its head.
-*/
-
-void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-{
-	int	b_target_idx;
-	int	a_dist;
-	int	b_dist;
-
-	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
-	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
-	while (a_dist != 0)
-	{
-		ps_rev_rotate_stack(stack_a, arrsz, 'a');
-		a_dist--;
-	}
-	while (b_dist != 0)
-	{
-		ps_rotate_stack(stack_b, arrsz, 'b');
-		b_dist--;
-	}
-}
-
-
-/* Description: Moves an element from Stack A and its target element in Stack B
-   to the top of their respective stacks:
-   1. Finds the target element in Stack B
-   2. Execute the push_swap operations based on the elements' closenest to their
-   stacks' head or tail
-*/
-
-void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
-{
-	int	b_target_idx;
-	int	scenario;
-
-	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
-	if (scenario == 1)
-		ts_bring_top_hh(stack_a, stack_b, arrsz, a_idx);
-	else if (scenario == 2)
-		ts_bring_top_tt(stack_a, stack_b, arrsz, a_idx);
+	if (stack_a->stack[a_idx] < stack_b->stack[find_min(stack_b, arrsz)])
+		b_target_idx = find_max(stack_b, arrsz);
 	else
-	{
-		if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 1)
-			ts_bring_top_ht(stack_a, stack_b, arrsz, a_idx);
-		else if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 2)
-			ts_bring_top_th(stack_a, stack_b, arrsz, a_idx);
-		else if (ts_strategy_ht_th(stack_a, stack_b, arrsz, a_idx) == 3)
-			ts_bring_top_hh(stack_a, stack_b, arrsz, a_idx);
-		else
-			ts_bring_top_tt(stack_a, stack_b, arrsz, a_idx);
-	}
+		b_target_idx = find_prev_max(stack_b, arrsz, stack_a->stack[a_idx]);
+	return (b_target_idx);
 }
+
+/* Description: Calculates the cost of moving both element from Stack A and
+   target element from Stack B to the head of their stacks via upward movement.
+*/
+int	ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+	int	cost;
+	int	a_dist;
+	int	b_dist;
+
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
+	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
+	cost = a_dist + b_dist - ft_least(a_dist, b_dist, INT_MAX);
+	return (cost);
+}
+
+/* Description: Calculates the cost of moving both element from Stack A and
+   target element from Stack B to the head of their stacks via downward movement.
+*/
+int	ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+	int	cost;
+	int	a_dist;
+	int	b_dist;
+
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
+	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
+	cost = a_dist + b_dist - ft_least(a_dist, b_dist, INT_MAX);
+	return (cost);
+}
+
+/* Description: Calculates the cost of moving both element from Stack A and
+   target element from Stack B to the head of their stacks. Element A uses
+   upward movement while element B uses downward movement.
+*/
+int	ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+	int	cost;
+	int	a_dist;
+	int	b_dist;
+
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, stack_a->headidx, a_idx);
+	b_dist = find_dist(arrsz, b_target_idx, stack_b->tailidx) + 1;
+	cost = a_dist + b_dist;
+	return (cost);
+}
+
+/* Description: Calculates the cost of moving both element from Stack A and
+   target element from Stack B to the head of their stacks. Element A uses
+   downward movement while element B uses upward movement.
+*/
+int	ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+{
+	int	b_target_idx;
+	int	cost;
+	int	a_dist;
+	int	b_dist;
+
+	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
+	a_dist = find_dist(arrsz, a_idx, stack_a->tailidx) + 1;
+	b_dist = find_dist(arrsz, stack_b->headidx, b_target_idx);
+	cost = a_dist + b_dist;
+	return (cost);
+}
+
+
+
+
+
+
+
