@@ -40,7 +40,7 @@ void	print_cray(t_cray *cray, int arrsz);
 int		find_min(t_cray *cray, int arrsz);
 int		find_max(t_cray *cray, int arrsz);
 int		find_prev_max(t_cray *cray, int arrsz, int max);
-
+int		find_next_max(t_cray *cray, int arrsz, int max);
 int		find_dist(int arrsz, int from, int to);
 int		head_or_tail(t_cray *cray, int arrsz, int index);
 int		check_sorted(t_cray *cray, int arrsz);
@@ -68,6 +68,7 @@ void	rotate_to_head(t_cray *stk, int arrsz, int index);
 void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
 
 /* Turk sort steps */
+void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
 int		find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx);
 int		ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);

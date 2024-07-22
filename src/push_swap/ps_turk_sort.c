@@ -167,7 +167,9 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 	int	tgt_idx;
 
 	if (arrsz <= 5)
-	// perform sorting for 5 or less
+	{
+		// perform sorting for 5 or less
+	}
 	else
 	{
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
@@ -175,13 +177,13 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 		while (stack_a->count > 3)
 		{
 			tgt_idx = ts_find_cheapest(stack_a, stack_b, arrsz);
-			ts_bring_top(stack_a, stack_b, arrsz, cheapest_idx);
+			ts_bring_top(stack_a, stack_b, arrsz, tgt_idx);
 			ps_push_stack(stack_a, stack_b, arrsz, 'b');
 		}
 		ps_sort_three(stack_a, arrsz, 'a');
 		while (stack_b->count > 0)
 		{
-			tgt_idx = find_target_a(stack_a, stack_b, arrsz, stack_b->tailidx);
+			tgt_idx = find_target_a(stack_a, stack_b, arrsz, stack_b->headidx);
 			rotate_to_head(stack_a, arrsz, tgt_idx);
 			ps_push_stack(stack_b, stack_a, arrsz, 'a');
 		}

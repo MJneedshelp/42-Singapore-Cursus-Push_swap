@@ -94,47 +94,31 @@ int	main(int argc, char *argv[])
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_push_stack(stack_a, stack_b, argc - 1, 'b');
-	ps_rotate_stack(stack_b, argc - 1, 'b');
-	printf("Stack A\n");
-	print_cray(stack_a, argc - 1);
-	printf("Stack B\n");
-	print_cray(stack_b, argc - 1);
-	//printf("Min stack B | Index: %d | Val: %d\n", find_min(stack_b, argc - 1), stack_b->stack[find_min(stack_b, argc - 1)]);
-	//printf("Max stack B | Index: %d | Val: %d\n", find_max(stack_b, argc - 1), stack_b->stack[find_max(stack_b, argc - 1)]);
-	while (i < stack_a->count)
-	{
-		printf("A Elm: %d | Target B val: %d | 2 hd cost: %d | 2 tl cost: %d | ahd, btl: %d | atl, bhd: %d | final cost: %d\n", \
-		stack_a->stack[(stack_a->headidx + i) % (argc - 1)], \
-		stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1))], \
-		ts_cost_2hd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-		ts_cost_2tl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-		ts_cost_ahd_btl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-		ts_cost_atl_bhd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-		ts_calc_cost(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)));
-		i++;
-	}
-	printf("Cheapest to push from A. Idx: %d | Val: %d\n", ts_find_cheapest(stack_a, stack_b, argc - 1), stack_a->stack[ts_find_cheapest(stack_a, stack_b, argc - 1)]);
-	//ts_bring_top_hh(stack_a, stack_b, argc - 1, stack_a->tailidx);
-	ts_bring_top_tt(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
-	printf("Stack A\n");
-	print_cray(stack_a, argc - 1);
-	printf("Stack B\n");
-	print_cray(stack_b, argc - 1);
-	ts_bring_top_ht(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
-	printf("Stack A\n");
-	print_cray(stack_a, argc - 1);
-	printf("Stack B\n");
-	print_cray(stack_b, argc - 1);
-	ts_bring_top_th(stack_a, stack_b, argc - 1, stack_a->headidx + 1);
+	ps_turk_sort(stack_a, stack_b, argc - 1);
 	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
 
-	
+	// while (i < stack_a->count)
+	// {
+	// 	printf("A Elm: %d | Target B val: %d | 2 hd cost: %d | 2 tl cost: %d | ahd, btl: %d | atl, bhd: %d | final cost: %d\n", \
+	// 	stack_a->stack[(stack_a->headidx + i) % (argc - 1)], \
+	// 	stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1))], \
+	// 	ts_cost_2hd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+	// 	ts_cost_2tl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+	// 	ts_cost_ahd_btl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+	// 	ts_cost_atl_bhd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
+	// 	ts_calc_cost(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)));
+	// 	i++;
+	// }
+
+	printf("Stack A\n");
+	print_cray(stack_a, argc - 1);
+	printf("Stack B\n");
+	print_cray(stack_b, argc - 1);
+
+
 	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[3], find_target_b(stack_a, stack_b, argc - 1, 3), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 3)]);
 	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[4], find_target_b(stack_a, stack_b, argc - 1, 4), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 4)]);
 	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[7], find_target_b(stack_a, stack_b, argc - 1, 7), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 7)]);

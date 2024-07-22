@@ -26,7 +26,7 @@ int	find_next_max(t_cray *cray, int arrsz, int max)
 	int	i;
 
 	i = 0;
-	next_max = -1;
+	next_max = INT_MAX;
 	hdidx = cray->headidx;
 	while (i < cray->count)
 	{

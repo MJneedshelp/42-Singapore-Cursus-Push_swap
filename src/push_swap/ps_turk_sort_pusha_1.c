@@ -24,10 +24,10 @@ int	find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx)
 	int	a_target_idx;
 
 	if (stack_b->stack[b_idx] > stack_a->stack[find_max(stack_a, arrsz)])
-		a_target_idx = find_min(stack_b, arrsz);
+		a_target_idx = find_min(stack_a, arrsz);
 	else
-		a_target_idx = find_next_max(stack_b, arrsz, stack_a->stack[a_idx]);
-	return (b_target_idx);
+		a_target_idx = find_next_max(stack_a, arrsz, stack_b->stack[b_idx]);
+	return (a_target_idx);
 }
 
 
@@ -35,7 +35,7 @@ int	find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx)
 
 
 
-/* Description: 
+/* Description:
 
 
 */

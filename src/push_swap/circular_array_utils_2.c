@@ -120,7 +120,7 @@ int	find_prev_max(t_cray *cray, int arrsz, int max)
 	while (i < cray->count)
 	{
 		if (cray->stack[(hdidx + i) % arrsz] < max && \
-		cray->stack[(hdidx + i) % arrsz] > next_max)
+		cray->stack[(hdidx + i) % arrsz] > prev_max)
 		{
 			prev_max = cray->stack[(hdidx + i) % arrsz];
 			retidx = (hdidx + i) % arrsz;
