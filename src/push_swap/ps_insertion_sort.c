@@ -14,28 +14,28 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
-/* Description: Rotates an element in the stack to the head. Uses rotate if
-   the element is closer to the head and reverse rotate if the element is
-   closer to the tail.
-*/
+// /* Description: Rotates an element in the stack to the head. Uses rotate if
+//    the element is closer to the head and reverse rotate if the element is
+//    closer to the tail.
+// */
 
-void	rotate_to_head(t_cray *stk, int arrsz, int index)
-{
-	int	dist_to_head;
-	int	dist_to_tail;
-	int	final_val;
+// void	rotate_to_head(t_cray *stk, int arrsz, int index)
+// {
+// 	int	dist_to_head;
+// 	int	dist_to_tail;
+// 	int	final_val;
 
-	dist_to_head = find_dist(arrsz, stk->headidx, index);
-	dist_to_tail = find_dist(arrsz, index, stk->tailidx);
-	final_val = stk->stack[index];
-	while (stk->stack[stk->headidx] != final_val)
-	{
-		if (dist_to_head <= dist_to_tail + 1)
-			ps_rotate_stack(stk, arrsz, 'a');
-		else
-			ps_rev_rotate_stack(stk, arrsz, 'a');
-	}
-}
+// 	dist_to_head = find_dist(arrsz, stk->headidx, index);
+// 	dist_to_tail = find_dist(arrsz, index, stk->tailidx);
+// 	final_val = stk->stack[index];
+// 	while (stk->stack[stk->headidx] != final_val)
+// 	{
+// 		if (dist_to_head <= dist_to_tail + 1)
+// 			ps_rotate_stack(stk, arrsz, 'a');
+// 		else
+// 			ps_rev_rotate_stack(stk, arrsz, 'a');
+// 	}
+// }
 
 /* Description: sorts stack A by pushing the all numbers to stack B starting
    from the smallest number to the biggest. Push the whole of stack B back to

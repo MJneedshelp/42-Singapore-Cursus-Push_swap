@@ -135,6 +135,28 @@ int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 	return (cheapest_idx);
 }
 
+/* Description: Rotates an element in the stack to the head. Uses rotate if
+   the element is closer to the head and reverse rotate if the element is
+   closer to the tail.
+*/
+
+void	rotate_to_head(t_cray *stk, int arrsz, int index)
+{
+	int	dist_to_head;
+	int	dist_to_tail;
+	int	final_val;
+
+	dist_to_head = find_dist(arrsz, stk->headidx, index);
+	dist_to_tail = find_dist(arrsz, index, stk->tailidx);
+	final_val = stk->stack[index];
+	while (stk->stack[stk->headidx] != final_val)
+	{
+		if (dist_to_head <= dist_to_tail + 1)
+			ps_rotate_stack(stk, arrsz, 'a');
+		else
+			ps_rev_rotate_stack(stk, arrsz, 'a');
+	}
+}
 
 /* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 */
@@ -142,7 +164,7 @@ int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 
 void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
-	int	cheapest_idx;
+	int	tgt_idx;
 
 	if (arrsz <= 5)
 	// perform sorting for 5 or less
@@ -152,14 +174,16 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
 		while (stack_a->count > 3)
 		{
-			cheapest_idx = ts_find_cheapest(stack_a, stack_b, arrsz);
+			tgt_idx = ts_find_cheapest(stack_a, stack_b, arrsz);
 			ts_bring_top(stack_a, stack_b, arrsz, cheapest_idx);
 			ps_push_stack(stack_a, stack_b, arrsz, 'b');
 		}
 		ps_sort_three(stack_a, arrsz, 'a');
 		while (stack_b->count > 0)
 		{
-			//push to A
+			tgt_idx = find_target_a(stack_a, stack_b, arrsz, stack_b->tailidx);
+			rotate_to_head(stack_a, arrsz, tgt_idx);
+			ps_push_stack(stack_b, stack_a, arrsz, 'a');
 		}
 		if (check_sorted(stack_a, arrsz) == 0)
 			rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz));

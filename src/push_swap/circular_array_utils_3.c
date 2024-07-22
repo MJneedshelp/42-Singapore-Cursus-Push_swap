@@ -41,13 +41,6 @@ int	find_next_max(t_cray *cray, int arrsz, int max)
 	return (retidx);
 }
 
-
-
-
-
-
-
-
 /* Description: Takes in a circular array of integers and checks if the elements
    in the array are sorted in ascending order starting from the head. The
    elements in the array should already be simplified [0, N). The circular array

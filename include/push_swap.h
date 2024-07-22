@@ -69,6 +69,7 @@ void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz);
 
 /* Turk sort steps */
 int		find_target_b(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
+int		find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx);
 int		ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
