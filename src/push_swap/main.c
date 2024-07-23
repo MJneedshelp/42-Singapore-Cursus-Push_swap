@@ -88,61 +88,34 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	arr = ps_input_validation(argc, argv);
+
+	//probably need to do smth here
+
 	stack_a = ps_init_stack(argc - 1, arr);
 	stack_b = ps_init_stack(argc - 1, NULL);
+
 	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
+
+
+	// if (argc - 1 <= 3)
+	// 	//case of 3 args or less
+	// else
+	// 	ps_turk_sort(stack_a, stack_b, argc - 1);
+
 	ps_turk_sort(stack_a, stack_b, argc - 1);
-	printf("Stack A\n");
-	print_cray(stack_a, argc - 1);
-	printf("Stack B\n");
-	print_cray(stack_b, argc - 1);
 
-	// while (i < stack_a->count)
-	// {
-	// 	printf("A Elm: %d | Target B val: %d | 2 hd cost: %d | 2 tl cost: %d | ahd, btl: %d | atl, bhd: %d | final cost: %d\n", \
-	// 	stack_a->stack[(stack_a->headidx + i) % (argc - 1)], \
-	// 	stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1))], \
-	// 	ts_cost_2hd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-	// 	ts_cost_2tl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-	// 	ts_cost_ahd_btl(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-	// 	ts_cost_atl_bhd(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)), \
-	// 	ts_calc_cost(stack_a, stack_b, argc - 1, (stack_a->headidx + i) % (argc - 1)));
-	// 	i++;
-	// }
 
 	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
-
-
-	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[3], find_target_b(stack_a, stack_b, argc - 1, 3), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 3)]);
-	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[4], find_target_b(stack_a, stack_b, argc - 1, 4), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 4)]);
-	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[7], find_target_b(stack_a, stack_b, argc - 1, 7), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 7)]);
-	// printf("A val: %d | Target B index %d | Target B val: %d\n", stack_a->stack[11], find_target_b(stack_a, stack_b, argc - 1, 11), stack_b->stack[find_target_b(stack_a, stack_b, argc - 1, 11)]);
-
-
 
 }
 
 
 
 
-// Main used for testing things
-
-// int	main(void)
-// {
-// 	t_cray	*cr1;
-// 	int		arrsz;
-
-// 	arrsz = 5;
-// 	cr1 = init_cray(arrsz);
-// 	add_itm_tl(cr1, 1, arrsz);
-// 	print_cray(cr1, arrsz);
-// 	printf("Test ft_strlen for word: %lu\n", ft_strlen("word"));
-// 	ft_printf("Testing ft_printf\n");
-// }
 

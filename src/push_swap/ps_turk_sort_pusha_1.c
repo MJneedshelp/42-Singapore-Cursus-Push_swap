@@ -35,12 +35,5 @@ int	find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx)
 
 
 
-/* Description:
-
-
-*/
-
-
-
 
 
