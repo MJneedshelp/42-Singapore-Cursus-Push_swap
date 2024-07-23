@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sorting_functions.c                             :+:      :+:    :+:   */
+/*   ps_sort_three_less.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 #include "../../include/ft_printf.h"
 
 /* Description: Sorts a stack of 3 elements in ascending order with a maximum
-   of 2 moves.
+   of 2 moves. Function to be used only when there are 3 elements in the stack.
 */
 
 void	ps_sort_three(t_cray *stack, int arrsz, char c)
@@ -36,4 +36,27 @@ void	ps_sort_three(t_cray *stack, int arrsz, char c)
 		else
 			ps_swap_stack(stack, arrsz, c);
 	}
+}
+
+/* Description: Sorts a stack of 2 elements in ascending order. Function to be 
+   used only when there are 2 elements in the stack.
+*/
+
+void	ps_sort_two(t_cray *stack, int arrsz, char c)
+{
+	if (check_sorted(stack, arrsz) != 1)
+		ps_swap_stack(stack, arrsz, c);
+}
+
+/* Description: Takes in a stack and checks if the number of elements in the
+   stack. Executes ps_sort_three or ps_sort_two depending on the number of 
+   elements in the stack.
+*/
+
+void	ps_sort_three_less(t_cray *stack, int arrsz, char c)
+{
+	if (stack->count == 3)
+		ps_sort_three(stack, arrsz, c);
+	else
+		ps_sort_two(stack, arrsz, c);
 }

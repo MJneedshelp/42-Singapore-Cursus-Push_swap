@@ -62,6 +62,9 @@ void	ps_rev_rotate_both(t_cray *stack1, t_cray *stack2, int arrsz);
 int		*ps_input_validation(int argc, char *argv[]);
 t_cray	*ps_init_stack(int arrsz, int *arr);
 void	ps_sort_three(t_cray *stack, int arrsz, char c);
+void	ps_sort_two(t_cray *stack, int arrsz, char c);
+void	ps_sort_three_less(t_cray *stack, int arrsz, char c);
+
 
 /* Sort Utilities*/
 void	rotate_to_head(t_cray *stk, int arrsz, int index);
