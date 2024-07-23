@@ -65,6 +65,12 @@ void	ps_sort_three_less(t_cray *stack, int arrsz, char c);
 
 /* push_swap main steps */
 int		*ps_input_validation(int argc, char *argv[]);
+int		*ps_validate_one_input(char *arg1);
+int		check_numeric(char *str);
+int		check_duplicate(int *arr, int arrsz);
+int		find_next_least(int *arr, int arrsz, long least);
+int		*simplify_arr(int *arr, int arrsz);
+
 t_cray	*ps_init_stack(int arrsz, int *arr);
 
 /* Turk sort steps */

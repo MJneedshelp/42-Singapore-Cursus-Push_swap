@@ -133,7 +133,7 @@ int	*simplify_arr(int *arr, int arrsz)
    		- no input
 		- inputs are not integers or out of range
 		- inputs are duplicated
-		*/
+*/
 
 int	*ps_input_validation(int argc, char *argv[])
 {
@@ -141,21 +141,32 @@ int	*ps_input_validation(int argc, char *argv[])
 	int	i;
 
 	i = 0;
-	ret = (int *)malloc((argc - 1) * sizeof(int));
-	if (ret == NULL)
-		return (NULL);
-	while (i++ < argc - 1)
+	if (argc == 2)
 	{
-		if (check_numeric(argv[i]) == 0)
-			return (free(ret), NULL);
-		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
-			return (free(ret), NULL);
-		ret[i - 1] = ft_atoi(argv[i]);
+		printf("inside validation: %s\n", argv[1]);
+		ret = ps_validate_one_input(argv[1]);
+		printf("after validation: %d, %d, %d\n", ret[0], ret[1], ret[2]);
+		if (ret == NULL)
+			return (NULL);
 	}
-	if (check_duplicate(ret, argc - 1) == 0)
-		return (free(ret), NULL);
-	ret = simplify_arr(ret, argc - 1);
-	if (ret == NULL)
-		return (NULL);
+	else
+	{
+		ret = (int *)malloc((argc - 1) * sizeof(int));
+		if (ret == NULL)
+			return (NULL);
+		while (i++ < argc - 1)
+		{
+			if (check_numeric(argv[i]) == 0)
+				return (free(ret), NULL);
+			if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+				return (free(ret), NULL);
+			ret[i - 1] = ft_atoi(argv[i]);
+		}
+		if (check_duplicate(ret, argc - 1) == 0)
+			return (free(ret), NULL);
+		ret = simplify_arr(ret, argc - 1);
+		if (ret == NULL)
+			return (NULL);
+	}
 	return (ret);
 }

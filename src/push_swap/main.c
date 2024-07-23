@@ -85,21 +85,22 @@ int	main(int argc, char *argv[])
 	t_cray	*stack_b;
 
 	arr = ps_input_validation(argc, argv);
+	printf("after validation in main: %d, %d, %d\n", arr[0], arr[1], arr[2]);
 	if (arr == NULL)
 		end_error();
-	stack_a = ps_init_stack(argc - 1, arr);
-	stack_b = ps_init_stack(argc - 1, NULL);
+	stack_a = ps_init_stack((sizeof(*arr) / sizeof(int)), arr);
+	stack_b = ps_init_stack((sizeof(*arr) / sizeof(int)), NULL);
 	if (stack_a == NULL || stack_b == NULL)
 	{
 		free_mem(stack_a, stack_b, arr);
 		end_error();
 	}
-	if (check_sorted(stack_a, argc - 1) == 0)
+	if (check_sorted(stack_a, (sizeof(*arr) / sizeof(int))) == 0)
 	{
-		if (argc - 1 <= 3)
-			ps_sort_three_less(stack_a, argc - 1, 'a');
+		if ((sizeof(*arr) / sizeof(int))<= 3)
+			ps_sort_three_less(stack_a, (sizeof(*arr) / sizeof(int)), 'a');
 		else
-			ps_turk_sort(stack_a, stack_b, argc - 1);
+			ps_turk_sort(stack_a, stack_b, (sizeof(*arr) / sizeof(int)));
 	}
 	free_mem(stack_a, stack_b, arr);
 	exit (0);
