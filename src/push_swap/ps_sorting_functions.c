@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_sort_three_less.c                               :+:      :+:    :+:   */
+/*   ps_sorting_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 19:31:20 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:22:26 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 void	ps_sort_three(t_cray *stack, int arrsz, char c)
 {
 	int	head_val;
-	int mid_val;
+	int	mid_val;
 	int	tail_val;
 
 	while (check_sorted(stack, arrsz) != 1)
@@ -38,7 +38,7 @@ void	ps_sort_three(t_cray *stack, int arrsz, char c)
 	}
 }
 
-/* Description: Sorts a stack of 2 elements in ascending order. Function to be 
+/* Description: Sorts a stack of 2 elements in ascending order. Function to be
    used only when there are 2 elements in the stack.
 */
 
@@ -63,10 +63,11 @@ void	ps_sort_three_less(t_cray *stack, int arrsz, char c)
 
 /* Description: Rotates an element in the stack to the head. Uses rotate if
    the element is closer to the head and reverse rotate if the element is
-   closer to the tail.
+   closer to the tail. Prints out the operation r(a) / r(b) or rr(a) / rr(b)
+   based on the input char c (stack name).
 */
 
-void	rotate_to_head(t_cray *stk, int arrsz, int index)
+void	rotate_to_head(t_cray *stk, int arrsz, int index, char c)
 {
 	int	dist_to_head;
 	int	dist_to_tail;
@@ -78,8 +79,8 @@ void	rotate_to_head(t_cray *stk, int arrsz, int index)
 	while (stk->stack[stk->headidx] != final_val)
 	{
 		if (dist_to_head <= dist_to_tail + 1)
-			ps_rotate_stack(stk, arrsz, 'a');
+			ps_rotate_stack(stk, arrsz, c);
 		else
-			ps_rev_rotate_stack(stk, arrsz, 'a');
+			ps_rev_rotate_stack(stk, arrsz, c);
 	}
 }

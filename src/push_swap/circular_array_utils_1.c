@@ -12,9 +12,9 @@
 
 #include "../../include/push_swap.h"
 
-/* Description: Initialises a structure containing the stack.Allocates memory
+/* Description: Initialises a structure containing the stack. Allocates memory
    with malloc for the structure containing thefollowing members:
-   - stack: an array of integers with size - arrsz. Memory allocated with malloc
+   - stack: an array of integers with size: arrsz. Memory allocated with malloc
    - count: the number of items in the array. Initialised as 0
    - headidx: the index of the head of the circular array. Initialised as 0
    - tailidx: the index of the tail of the circular array. Initialised as -1

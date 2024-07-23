@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:09:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 16:17:13 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:31:17 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,7 @@ int	*simplify_arr(int *arr, int arrsz)
 	int		i;
 
 	i = 0;
-	//use this in for real
-	//least = (long)INT_MIN - 1;
-	//use this in vscode at home
-	least = INT_MIN;
+	least = (long)INT_MIN - 1;
 	ret = (int *)malloc(arrsz * sizeof(int));
 	if (ret == NULL)
 		return (NULL);
@@ -162,36 +159,3 @@ int	*ps_input_validation(int argc, char *argv[])
 		return (NULL);
 	return (ret);
 }
-
-// Testing for input validation
-/*
-int	main(int argc, char *argv[])
-{
-	int	*arr;
-	int	*arr2;
-	int	i;
-	int	j;
-
-	printf("Test: %s\n", argv[1]);
-	arr = ps_input_validation(argc, argv);
-	i = 0;
-	j = 0;
-	printf("Arr: %p\n", arr);
-	if (arr != NULL)
-	{
-		while (i < argc - 1)
-		{
-			printf("Item in arr: %d\n", arr[i]);
-			i++;
-		}
-	}
-	//printf("Index of least: %d\n", find_next_least(arr, argc - 1, -11));
-	arr2 = simplify_arr(arr, argc - 1);
-	printf("Simplified Arr: %p\n", arr2);
-	while (j < argc - 1)
-	{
-		printf("Simplified arr: %d\n", arr2[j]);
-		j++;
-	}
-}
-*/

@@ -23,7 +23,8 @@ void	swap(t_cray *cray, int arrsz)
 	if (chk_cray_empty(cray) == 1 || cray->count < 2)
 		return ;
 	temp = cray->stack[cray->headidx];
-	cray->stack[cray->headidx] = cray->stack[(cray->headidx + 1 + arrsz) % arrsz];
+	cray->stack[cray->headidx] = \
+	cray->stack[(cray->headidx + 1 + arrsz) % arrsz];
 	cray->stack[(cray->headidx + 1 + arrsz) % arrsz] = temp;
 }
 

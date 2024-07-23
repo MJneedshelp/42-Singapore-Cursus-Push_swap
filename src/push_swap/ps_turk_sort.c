@@ -6,46 +6,13 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 11:44:25 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:26:56 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
-
-/* Steps:
-   1. Probably need to think about the logic if there's less than 5 elements
-   in the stack A
-   2. Push 2 elements to stack B to form the min and the max in stack B
-   3. While stack A has more than 3 elements
-		- calculate cost for each element to be moved to stack B
-			- check if the elememt is the new min in stack B
-				- target element in stack b: current max in stack B
-			- Not new min
-				- target element in stack b: the next smallest element after
-				the current element in stack A (works even if the element in A
-				is the biggest)
-			- Cost: (no. steps to move elm in A to top) + (no. steps to move elm in B to top)
-				- if both elm A and target B are closer to head
-					- count number of (rr)s + ra / rb needed
-					- Dist head (A) + Dist Head (B) - least(Dist head (A) + Dist Head (B))
-				- if both elm A and target B are closer to tail
-					- count the number of rrr(s) + rra / rrb needed
-					- Dist tail (A) + Dist tail (B) - least(Dist tail (A) + Dist tail (B))
-				- if both elm A and target B are closer to different ends compare between 3 movements
-					- Dist head (A) + Dist Head (B) - least(Dist head (A) + Dist Head (B))
-					- Dist tail (A) + Dist tail (B) - least(Dist tail (A) + Dist tail (B))
-					- A dist closer(head / tail) + b dist closer(head / tail)
-		- execute the first cheapest move to push to B
-	4. Sort three in stack A
-	5. While stack B not empty
-		- find next bigger elm in stack A
-			- move next bigger elm in stack A to the top
-		- if elm B is the new biggest in stack A
-			- move the smallest in stack A to the top
-		- push from B to A
-*/
 
 /* Description: Takes in the index of the element from Stack A and finds the
    index of the target element in Stack B. Returns the 4 integers based on the
@@ -59,7 +26,7 @@
 int	ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
-	
+
 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
 	if (head_or_tail(stack_a, arrsz, a_idx) == 1 && \
 	head_or_tail(stack_b, arrsz, b_target_idx) == 1)
@@ -108,8 +75,9 @@ int	ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 	return (cost);
 }
 
-/* Description: Runs through each element in Stack A and calculates the cost of pushing them
-   to Stack B. Returns the index of the first element in Stack A with the cheapest cost.
+/* Description: Runs through each element in Stack A and calculates the cost of 
+   pushing them to Stack B. Returns the index of the first element in Stack A 
+   with the cheapest cost.
 */
 
 int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
@@ -135,11 +103,26 @@ int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 	return (cheapest_idx);
 }
 
-
-/* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   Function is only used when the number of arg is more than 3
+/* Description: Performs the turk sort algorithm (cr: A. Yigit Ogun). This
+   function is only used when there are more than 3 items in the stack.
+   Actions:
+   1. Push either 1 (if Stack A has 4 elements) or 2 elements (if Stack A 
+   has more than 4) from Stack A to Stack B.
+   2. Start pushing elements from Stack A to Stack B until there are only 3
+   elements left in Stack A:
+		- for each push, find the target element in Stack B
+		- calculate the cost of bringing the element and it's target to the
+		top
+		- bring the cheapest element in Stack A and its target element in 
+		Stack B to the top
+		- push to Stack B
+   3. Sort the remaining 3 elements in Stack A
+   4. Start pushing the elements in Stack B back to Stack A
+		- for each push, find the target element in Stack A
+		- bring target element in Stack A to top
+		- push to Stack A
+   5. Rotate the smallest in A to the head
 */
-
 
 void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
@@ -158,13 +141,9 @@ void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 	while (stack_b->count > 0)
 	{
 		tgt_idx = find_target_a(stack_a, stack_b, arrsz, stack_b->headidx);
-		rotate_to_head(stack_a, arrsz, tgt_idx);
+		rotate_to_head(stack_a, arrsz, tgt_idx, 'a');
 		ps_push_stack(stack_b, stack_a, arrsz, 'a');
 	}
 	if (check_sorted(stack_a, arrsz) == 0)
-		rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz));
+		rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz), 'a');
 }
-
-
-
-

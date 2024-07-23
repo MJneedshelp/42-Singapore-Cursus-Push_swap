@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 00:10:20 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 19:17:51 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:25:38 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,69 +14,34 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
-
-/*
-//Main logic
-int	main(int argc, char	*argv[])
-{
-	//1. Input validation (probably can be 1 file by itself):
-	//	- input: argc, argv[]
-	//	- return:
-	//		- array of integers if all items are validated
-	//		- NULL pointer if argc == 1 (no input)
-	//		-
-	//	- Actions: checks the following
-	//		- no input
-	//			- atoi for each argument
-	//			- inputs are not integers
-	//		- not numbers
-	//		- out of range of integers
-	//		- Duplicate numbers
-
-	//2. Convert array of integers into all running order positive integers
-	//	- Look for smallest element
-	//	- get range
-
-	//3. Init stack x 2 for A and B stack (probably can be 1 file by itself)
-	//	- input: array from 1, argc (count of items in array)
-	//	- return: cray A
-	//	- Actions:
-	//		- init_cray
-	//		- if array is not NULL
-	//			- while not arrsz, add items into stack
-
-	//4. Algorithm function
-	//	- input: stacks A and B
-	//	- return: void
-	//	- Actions:
-	//		- perform algo to sort stack A
-	//		- tbd
-}
+/* Description: Takes in a an array of integers and the size of the array.
+   Loads all of the integers into a circular array.
+   - The last number in the input array will be added to the bottom of the stack
+   - return:
+		- NULL if malloc fails
+		- stack: a circular buffer array populated with integers from the input
+		array
 */
 
-
-/*
-int	main(int argc, char *argv[])
+t_cray	*ps_init_stack(int arrsz, int *arr)
 {
-	int		*arr;
-	t_cray	*stack_a;
-	t_cray	*stack_b;
+	t_cray	*stack;
+	int		i;
 
-	arr = ps_input_validation(argc, argv);
-	if (arr == NULL)
-		return(ft_printf("Error\n"), -1);
-	stack_a = ps_init_stack(argc - 1, arr);
-	stack_b = ps_init_stack(argc - 1, NULL);
-	//print_cray(stack_a, argc - 1);
-	//print_cray(stack_b, argc - 1);
-	//need to think of freeing if malloc fails
-	if (check_sorted(stack_a, argc - 1) != 1)
-		ps_insertion_sort(stack_a, stack_b, argc - 1);
-	print_cray(stack_a, argc - 1);
-	return (0);
-
+	i = 0;
+	stack = init_cray(arrsz);
+	if (stack == NULL)
+		return (NULL);
+	if (arr != NULL)
+	{
+		while (i < arrsz)
+		{
+			add_itm_tl(stack, arr[i], arrsz);
+			i++;
+		}
+	}
+	return (stack);
 }
-*/
 
 /* Description: Takes in Stack A and Stack B and the number array.
    For each input, free the memory allocated if it is not NULL. 
@@ -97,43 +62,38 @@ void	free_mem(t_cray *stack_a, t_cray *stack_b, int *arr)
 	}
 }
 
+/* Description: Function to be used when an error is encountered.
+   Prints out Error\n and exits with 1.
+*/
+void	end_error(void)
+{
+	ft_printf("Error\n");
+	exit (1);
+}
 
-
-
-/* THIS IS THE REAL MAIN. FILL IN LATER
-
+/* Description: the main logic of push_swap. Actions:
+   1. Validates the input with ps_input_validation
+   2. Initialise Stacks A and Stacks B
+   3. If Stack A has <= 3 elements, perform sort_three_less
+   4. If Stack A has > 3 elements, perform turk sort
+   5. Free all allocated memory
 */
 int	main(int argc, char *argv[])
 {
 	int		*arr;
 	t_cray	*stack_a;
 	t_cray	*stack_b;
-	int		i;
 
-	i = 0;
 	arr = ps_input_validation(argc, argv);
 	if (arr == NULL)
-	{
-		ft_printf("Error\n");
-		exit (1);
-	}
-
-	//probably need to do smth here
-
+		end_error();
 	stack_a = ps_init_stack(argc - 1, arr);
 	stack_b = ps_init_stack(argc - 1, NULL);
-	// if (stack_a == NULL || stack_b == NULL)
-	// {
-	// 	free_mem(stack_a, stack_b, arr);
-	// 	ft_printf("Error\n");
-	// 	exit (1);
-	// }
-
-	// printf("Stack A\n");
-	// print_cray(stack_a, argc - 1);
-	// printf("Stack B\n");
-	// print_cray(stack_b, argc - 1);
-
+	if (stack_a == NULL || stack_b == NULL)
+	{
+		free_mem(stack_a, stack_b, arr);
+		end_error();
+	}
 	if (check_sorted(stack_a, argc - 1) == 0)
 	{
 		if (argc - 1 <= 3)
@@ -143,16 +103,4 @@ int	main(int argc, char *argv[])
 	}
 	free_mem(stack_a, stack_b, arr);
 	exit (0);
-
-
-	// printf("Stack A\n");
-	// print_cray(stack_a, argc - 1);
-	// printf("Stack B\n");
-	// print_cray(stack_b, argc - 1);
-
 }
-
-
-
-
-

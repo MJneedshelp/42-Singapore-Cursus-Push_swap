@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 11:44:25 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:19:50 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 		b_dist--;
 	}
 }
-
 
 /* Description: Moves an element from Stack A and its target element in Stack B
    to the top of their respective stacks by rotating both stacks. This function
@@ -134,7 +133,6 @@ void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 		b_dist--;
 	}
 }
-
 
 /* Description: Moves an element from Stack A and its target element in Stack B
    to the top of their respective stacks:

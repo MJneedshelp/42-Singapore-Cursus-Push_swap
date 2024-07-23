@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 13:45:47 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/09 15:19:53 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:23:41 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "../../include/ft_printf.h"
 
 /* Description: Swaps the first 2 elements at the top of a stack. Does nothing
-   if the stack does not have any elements or only has 1 element. Prints out the
-   operation s(a) or s(b) based on the input char c (stack name).
-   */
+   if the stack does not have any elements or only has 1 element. Prints out
+   the operation s(a) or s(b) based on the input char c (stack name).
+*/
 
 void	ps_swap_stack(t_cray *stack, int arrsz, char c)
 {
@@ -27,7 +27,7 @@ void	ps_swap_stack(t_cray *stack, int arrsz, char c)
 
 /* Description: takes in 2 stacks and perform the swap operation on both stacks.
    Prints out the operation ss.
-   */
+*/
 
 void	ps_swap_both(t_cray *stack1, t_cray *stack2, int arrsz)
 {
@@ -39,7 +39,7 @@ void	ps_swap_both(t_cray *stack1, t_cray *stack2, int arrsz)
 /* Description: Removes the top of stack 1 and puts it at the top of stack 2.
    Does nothing if stack 1 is empty. Prints out the operation p(a) or p(b)
    based on the input char c.
-   */
+*/
 
 void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c)
 {
@@ -62,7 +62,7 @@ void	ps_push_stack(t_cray *stack1, t_cray *stack2, int arrsz, char c)
 
 /* Decription: Rotates the stack clockwise (head becomes the tail). Prints
    out the operation r(a) or r(b) based on the input char c.
-  */
+*/
 
 void	ps_rotate_stack(t_cray *stack, int arrsz, char c)
 {
@@ -72,7 +72,7 @@ void	ps_rotate_stack(t_cray *stack, int arrsz, char c)
 
 /* Description: rotates the stack counter-clockwise (tail becomes head).
    Prints out the operation rr(a) or rr(b) based on the input char c.
-   */
+*/
 
 void	ps_rev_rotate_stack(t_cray *stack, int arrsz, char c)
 {

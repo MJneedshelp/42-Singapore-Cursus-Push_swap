@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 21:48:53 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/16 11:44:25 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/23 14:20:35 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,3 @@ int	ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 	cost = a_dist + b_dist;
 	return (cost);
 }
-
-
-
-
-
-
-
