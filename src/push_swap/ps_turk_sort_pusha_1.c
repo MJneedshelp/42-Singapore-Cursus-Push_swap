@@ -29,11 +29,3 @@ int	find_target_a(t_cray *stack_a, t_cray *stack_b, int arrsz, int b_idx)
 		a_target_idx = find_next_max(stack_a, arrsz, stack_b->stack[b_idx]);
 	return (a_target_idx);
 }
-
-
-
-
-
-
-
-

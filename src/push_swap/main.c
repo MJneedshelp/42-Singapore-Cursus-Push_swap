@@ -99,19 +99,21 @@ int	main(int argc, char *argv[])
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
 
-
+	if (check_sorted(stack_a, argc - 1) == 0)
+	{
 	// if (argc - 1 <= 3)
 	// 	//case of 3 args or less
 	// else
 	// 	ps_turk_sort(stack_a, stack_b, argc - 1);
 
-	ps_turk_sort(stack_a, stack_b, argc - 1);
-
-
+		ps_turk_sort(stack_a, stack_b, argc - 1);
+	}
 	printf("Stack A\n");
 	print_cray(stack_a, argc - 1);
 	printf("Stack B\n");
 	print_cray(stack_b, argc - 1);
+	
+	//need to free all the memory here
 
 }
 
