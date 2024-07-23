@@ -137,32 +137,33 @@ int	ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz)
 
 
 /* Description: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   Function is only used when the number of arg is more than 3
 */
 
-/*
+
 void	ps_turk_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
 {
-	if (arrsz <= 5)
-	// perform sorting for 5 or less
-	else
+	int	tgt_idx;
+
+	ps_push_stack(stack_a, stack_b, arrsz, 'b');
+	if (arrsz >= 5)
+		ps_push_stack(stack_a, stack_b, arrsz, 'b');
+	while (stack_a->count > 3)
 	{
+		tgt_idx = ts_find_cheapest(stack_a, stack_b, arrsz);
+		ts_bring_top(stack_a, stack_b, arrsz, tgt_idx);
 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
-		ps_push_stack(stack_a, stack_b, arrsz, 'b');
-		while (stack_a->count > 3)
-		{
-			//push cheapest to B
-			//calculate cost + push b
-		}
-		ps_sort_three(stack_a, arrsz, 'a');
-		while (stack_b->count > 0)
-		{
-			//push to A
-		}
-		if (check_sorted(stack_a, arrsz) == 0)
-			rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz));
 	}
+	ps_sort_three(stack_a, arrsz, 'a');
+	while (stack_b->count > 0)
+	{
+		tgt_idx = find_target_a(stack_a, stack_b, arrsz, stack_b->headidx);
+		rotate_to_head(stack_a, arrsz, tgt_idx);
+		ps_push_stack(stack_b, stack_a, arrsz, 'a');
+	}
+	if (check_sorted(stack_a, arrsz) == 0)
+		rotate_to_head(stack_a, arrsz, find_min(stack_a, arrsz));
 }
-*/
 
 
 

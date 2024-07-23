@@ -37,31 +37,31 @@
 // 	}
 // }
 
-/* Description: sorts stack A by pushing the all numbers to stack B starting
-   from the smallest number to the biggest. Push the whole of stack B back to
-   stack A afterwards. Steps:
-   1. Find the index of the smallest element in stack A
-   2. Rotate the smallest element to the head of stack A
-		- Use rotate if the element is closer to the head
-		- Use reverse rotate if the element is closer to the tail
-   3. Push element to stack B
-   4. Repeat steps 1 to 3 until all elements are in stack B
-   5. Push all elements back to stack A
+// /* Description: sorts stack A by pushing the all numbers to stack B starting
+//    from the smallest number to the biggest. Push the whole of stack B back to
+//    stack A afterwards. Steps:
+//    1. Find the index of the smallest element in stack A
+//    2. Rotate the smallest element to the head of stack A
+// 		- Use rotate if the element is closer to the head
+// 		- Use reverse rotate if the element is closer to the tail
+//    3. Push element to stack B
+//    4. Repeat steps 1 to 3 until all elements are in stack B
+//    5. Push all elements back to stack A
 
-*/
-void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
-{
-	int	smallest_index;
+// */
+// void	ps_insertion_sort(t_cray *stack_a, t_cray *stack_b, int arrsz)
+// {
+// 	int	smallest_index;
 
-	while (stack_b->count < arrsz)
-	{
-		smallest_index = find_min(stack_a, arrsz);
-		rotate_to_head(stack_a, arrsz, smallest_index);
-		ps_push_stack(stack_a, stack_b, arrsz, 'b');
-	}
-	while (stack_a->count < arrsz)
-		ps_push_stack(stack_b, stack_a, arrsz, 'a');
-}
+// 	while (stack_b->count < arrsz)
+// 	{
+// 		smallest_index = find_min(stack_a, arrsz);
+// 		rotate_to_head(stack_a, arrsz, smallest_index);
+// 		ps_push_stack(stack_a, stack_b, arrsz, 'b');
+// 	}
+// 	while (stack_a->count < arrsz)
+// 		ps_push_stack(stack_b, stack_a, arrsz, 'a');
+// }
 
 
 

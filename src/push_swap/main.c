@@ -78,7 +78,31 @@ int	main(int argc, char *argv[])
 }
 */
 
-//Used for testing
+/* Description: Takes in Stack A and Stack B and the number array.
+   For each input, free the memory allocated if it is not NULL. 
+*/
+void	free_mem(t_cray *stack_a, t_cray *stack_b, int *arr)
+{
+	if (arr != NULL)
+		free (arr);
+	if (stack_a != NULL)
+	{
+		free (stack_a->stack);
+		free (stack_a);
+	}
+	if (stack_b != NULL)
+	{
+		free (stack_b->stack);
+		free (stack_b);
+	}
+}
+
+
+
+
+/* THIS IS THE REAL MAIN. FILL IN LATER
+
+*/
 int	main(int argc, char *argv[])
 {
 	int		*arr;
@@ -88,11 +112,22 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	arr = ps_input_validation(argc, argv);
+	if (arr == NULL)
+	{
+		ft_printf("Error\n");
+		exit (1);
+	}
 
 	//probably need to do smth here
 
 	stack_a = ps_init_stack(argc - 1, arr);
 	stack_b = ps_init_stack(argc - 1, NULL);
+	// if (stack_a == NULL || stack_b == NULL)
+	// {
+	// 	free_mem(stack_a, stack_b, arr);
+	// 	ft_printf("Error\n");
+	// 	exit (1);
+	// }
 
 	// printf("Stack A\n");
 	// print_cray(stack_a, argc - 1);
@@ -106,13 +141,14 @@ int	main(int argc, char *argv[])
 		else
 			ps_turk_sort(stack_a, stack_b, argc - 1);
 	}
-	
+	free_mem(stack_a, stack_b, arr);
+	exit (0);
+
+
 	// printf("Stack A\n");
 	// print_cray(stack_a, argc - 1);
 	// printf("Stack B\n");
 	// print_cray(stack_b, argc - 1);
-	
-	//need to free all the memory here
 
 }
 

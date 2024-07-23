@@ -60,3 +60,26 @@ void	ps_sort_three_less(t_cray *stack, int arrsz, char c)
 	else
 		ps_sort_two(stack, arrsz, c);
 }
+
+/* Description: Rotates an element in the stack to the head. Uses rotate if
+   the element is closer to the head and reverse rotate if the element is
+   closer to the tail.
+*/
+
+void	rotate_to_head(t_cray *stk, int arrsz, int index)
+{
+	int	dist_to_head;
+	int	dist_to_tail;
+	int	final_val;
+
+	dist_to_head = find_dist(arrsz, stk->headidx, index);
+	dist_to_tail = find_dist(arrsz, index, stk->tailidx);
+	final_val = stk->stack[index];
+	while (stk->stack[stk->headidx] != final_val)
+	{
+		if (dist_to_head <= dist_to_tail + 1)
+			ps_rotate_stack(stk, arrsz, 'a');
+		else
+			ps_rev_rotate_stack(stk, arrsz, 'a');
+	}
+}
