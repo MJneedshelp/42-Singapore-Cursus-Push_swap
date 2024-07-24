@@ -26,6 +26,31 @@ PUSHSWAP_OBJ = $(PUSHSWAP_SRCS:.c=.o)
 
 # Target to make using Make all
 all: $(NAME)
+	echo "______          _              _"
+	echo "| ___ \        | |            | |"
+	echo "| |_/ /   _ ___| |__   ___  __| |"
+	echo "|  __/ | | / __| '_ \ / _ \/ _` |"
+	echo "| |  | |_| \__ \ | | |  __/ (_| |"
+	echo "\_|   \__,_|___/_| |_|\___|\__,_|"
+	echo ""
+	echo ""
+	echo ""
+	echo " ___"
+	echo "( _ )"
+	echo "/ _ \/\"
+	echo "| (_>  <"
+	echo "\___/\/"
+	echo ""
+	echo ""
+	echo "_____                                    _"
+	echo "/  ___|                                  | |"
+	echo "\ `--.__      ____ _ _ __  _ __   ___  __| |"
+	echo "`--. \ \ /\ / / _` | '_ \| '_ \ / _ \/ _` |"
+	echo "/\__/ /\ V  V / (_| | |_) | |_) |  __/ (_| |"
+	echo "\____/  \_/\_/ \__,_| .__/| .__/ \___|\__,_|"
+	echo "					| |   | |"
+	echo "					|_|   |_|"
+
 
 # Generate the programme by compiling the objects with libft.a
 $(NAME): $(LIBFT_LIB) $(PUSHSWAP_OBJ)
