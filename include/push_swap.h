@@ -63,14 +63,15 @@ void	ps_sort_three(t_cray *stack, int arrsz, char c);
 void	ps_sort_two(t_cray *stack, int arrsz, char c);
 void	ps_sort_three_less(t_cray *stack, int arrsz, char c);
 
-/* push_swap main steps */
-int		*ps_input_validation(int argc, char *argv[]);
-int		*ps_validate_one_input(char *arg1);
+/* push_swap input validation steps */
+int		find_stray_sz(char **stray);
+int		find_arr_sz_split(char *str);
+int		*ps_validate_input(int arrsz, char **stray, int strt_idx);
+int		*ps_gen_intray(int argc, char *argv[]);
 int		check_numeric(char *str);
 int		check_duplicate(int *arr, int arrsz);
 int		find_next_least(int *arr, int arrsz, long least);
 int		*simplify_arr(int *arr, int arrsz);
-
 t_cray	*ps_init_stack(int arrsz, int *arr);
 
 /* Turk sort steps */
@@ -81,21 +82,14 @@ int		ts_cost_2hd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_cost_2tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_cost_ahd_btl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_cost_atl_bhd(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-
 int		ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_find_cheapest(t_cray *stack_a, t_cray *stack_b, int arrsz);
-
 void	ts_bring_top(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 int		ts_strategy_ht_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 void	ts_bring_top_hh(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 void	ts_bring_top_tt(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 void	ts_bring_top_ht(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
 void	ts_bring_top_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx);
-
-
-
-
-
 
 #endif
