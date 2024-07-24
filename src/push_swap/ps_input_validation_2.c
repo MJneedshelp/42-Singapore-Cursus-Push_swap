@@ -15,8 +15,7 @@
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
 
-/* Description: free all the elements in the string arr.
-*/
+/* Description: free all the elements in the string arr. */
 
 static void	freeall(char **arr, int n)
 {
@@ -89,45 +88,3 @@ int	*ps_gen_intray(int argc, char *argv[])
 	}
 	return (ret);
 }
-
-
-
-
-
-
-
-// /* Description: Takes in a string and splits it into an array of strings
-//    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-//    WRITE THIS LATER
-// */
-// int	*ps_validate_one_input(char *arg1)
-// {
-// 	int		*ret;
-// 	char	**stray;
-// 	int		stray_sz;
-// 	int		i;
-
-// 	i = 0;
-// 	stray = ft_split(arg1, ' ');
-// 	if (stray == NULL)
-// 		return (NULL);
-// 	stray_sz = find_stray_sz(stray);
-// 	ret = (int *)malloc(stray_sz * sizeof(int));
-// 	if (ret == NULL)
-// 		return (free (stray), NULL);
-// 	while (i < stray_sz)
-// 	{
-// 		if (check_numeric(stray[i]) == 0)
-// 			return (free(ret), free(stray), NULL);
-// 		if (ft_atol(stray[i]) > INT_MAX || ft_atol(stray[i]) < INT_MIN)
-// 			return (free(ret), free(stray), NULL);
-// 		ret[i] = ft_atoi(stray[i]);
-// 		i++;
-// 	}
-// 	if (check_duplicate(ret, stray_sz) == 0)
-// 		return (free(ret), free(stray), NULL);
-// 	ret = simplify_arr(ret, stray_sz);
-// 	if (ret == NULL)
-// 		return (free(ret), free(stray), NULL);
-// 	return (ret);
-// }

@@ -67,7 +67,6 @@ void	free_mem(t_cray *stack_a, t_cray *stack_b, int *arr)
 */
 void	end_error(void)
 {
-	//ft_printf("Error\n");
 	ft_putendl_fd("Error", 2);
 	exit (1);
 }
