@@ -23,7 +23,7 @@
    - 4: A closer to tail, B closer to head
 */
 
-int	ts_check_a_b_hd_tl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+int	ts_chck_ab_hdtl(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
 
@@ -55,7 +55,7 @@ int	ts_calc_cost(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 	int	scenario;
 
 	b_target_idx = find_target_b(stack_a, stack_b, arrsz, a_idx);
-	scenario = ts_check_a_b_hd_tl(stack_a, stack_b, arrsz, a_idx);
+	scenario = ts_chck_ab_hdtl(stack_a, stack_b, arrsz, a_idx);
 	if (scenario == 1)
 		cost = ts_cost_2hd(stack_a, stack_b, arrsz, a_idx);
 	else if (scenario == 2)

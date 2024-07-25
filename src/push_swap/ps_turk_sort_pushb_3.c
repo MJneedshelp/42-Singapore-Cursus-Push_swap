@@ -27,7 +27,7 @@
    - 4: Both stacks reverse rotate
 */
 
-int	ts_strategy_ht_th(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
+int	ts_strat_htth(t_cray *stack_a, t_cray *stack_b, int arrsz, int a_idx)
 {
 	int	b_target_idx;
 

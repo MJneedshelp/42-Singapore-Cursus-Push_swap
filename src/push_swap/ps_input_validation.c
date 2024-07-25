@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:09:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/23 14:31:17 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/25 09:28:09 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,7 @@ int	*simplify_arr(int *arr, int arrsz)
 	int		i;
 
 	i = 0;
-	//least = (long)INT_MIN - 1;
-	least = INT_MIN;
+	least = (long)INT_MIN - 1;
 	ret = (int *)malloc(arrsz * sizeof(int));
 	if (ret == NULL)
 		return (NULL);
@@ -149,16 +148,12 @@ int	*ps_validate_input(int arrsz, char **stray, int strt_idx)
 	{
 		if (check_numeric(stray[strt_idx]) == 0)
 			return (free(ret), NULL);
-		if (ft_atol(stray[strt_idx]) > INT_MAX || ft_atol(stray[strt_idx]) < INT_MIN)
+		if (ft_atol(stray[strt_idx]) > INT_MAX || \
+				ft_atol(stray[strt_idx]) < INT_MIN)
 			return (free(ret), NULL);
 		ret[i] = ft_atoi(stray[strt_idx]);
 		i++;
 		strt_idx++;
 	}
-	if (check_duplicate(ret, arrsz) == 0)
-		return (free(ret), NULL);
-	ret = simplify_arr(ret, arrsz);
-	if (ret == NULL)
-		return (NULL);
 	return (ret);
 }

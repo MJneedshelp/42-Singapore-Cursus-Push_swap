@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 00:10:20 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/23 14:25:38 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/25 09:13:25 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int argc, char *argv[])
 	check_stack_init(stack_a, stack_b, arr);
 	if (check_sorted(stack_a, arrsz) == 0)
 	{
-		if (arrsz<= 3)
+		if (arrsz <= 3)
 			ps_sort_three_less(stack_a, arrsz, 'a');
 		else
 			ps_turk_sort(stack_a, stack_b, arrsz);

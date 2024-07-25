@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_input_validation.c                              :+:      :+:    :+:   */
+/*   ps_input_validation_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:09:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/23 14:31:17 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/25 11:05:13 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,29 @@ int	*ps_gen_intray(int argc, char *argv[])
 {
 	int		*ret;
 	char	**stray;
-	int		stray_sz;
+	int		arrsz;
 
 	if (argc == 2)
 	{
 		stray = ft_split(argv[1], ' ');
-		stray_sz = find_stray_sz(stray);
-		ret = ps_validate_input(stray_sz, stray, 0);
+		ret = ps_validate_input(find_stray_sz(stray), stray, 0);
 		if (ret == NULL)
-			return (freeall (stray, stray_sz), free (stray), NULL);
+			return (freeall(stray, find_stray_sz(stray)), free (stray), NULL);
+		arrsz = find_stray_sz(stray);
+		freeall(stray, find_stray_sz(stray));
+		free (stray);
 	}
 	else
 	{
 		ret = ps_validate_input(argc, argv, 1);
 		if (ret == NULL)
 			return (NULL);
+		arrsz = argc - 1;
 	}
+	if (check_duplicate(ret, arrsz) == 0)
+		return (free(ret), NULL);
+	ret = simplify_arr(ret, arrsz);
+	if (ret == NULL)
+		return (NULL);
 	return (ret);
 }
