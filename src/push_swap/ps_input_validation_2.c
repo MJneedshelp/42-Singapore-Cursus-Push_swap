@@ -6,7 +6,7 @@
 /*   By: mintan <mintan@student.42singapore.sg      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:09:36 by mintan            #+#    #+#             */
-/*   Updated: 2024/07/25 11:05:13 by mintan           ###   ########.fr       */
+/*   Updated: 2024/07/25 13:44:47 by mintan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ static void	freeall(char **arr, int n)
 {
 	int	i;
 
-	i = 0;
-	while (i <= n)
+	if (arr != NULL)
 	{
-		free(arr[i]);
-		i++;
+		i = 0;
+		while (i <= n)
+		{
+			free(arr[i]);
+			i++;
+		}
+		free(arr);
 	}
 }
 
@@ -36,9 +40,12 @@ int	find_stray_sz(char **stray)
 	int	stray_sz;
 
 	stray_sz = 0;
-	while (stray[stray_sz] != NULL)
+	if (stray != NULL)
 	{
-		stray_sz++;
+		while (stray[stray_sz] != NULL)
+		{
+			stray_sz++;
+		}
 	}
 	return (stray_sz);
 }
@@ -54,7 +61,6 @@ int	find_arr_sz_split(char *str)
 	stray = ft_split(str, ' ');
 	stray_size = find_stray_sz(stray);
 	freeall (stray, stray_size);
-	free (stray);
 	return (stray_size);
 }
 
@@ -76,19 +82,17 @@ int	*ps_gen_intray(int argc, char *argv[])
 	{
 		stray = ft_split(argv[1], ' ');
 		ret = ps_validate_input(find_stray_sz(stray), stray, 0);
-		if (ret == NULL)
-			return (freeall(stray, find_stray_sz(stray)), free (stray), NULL);
 		arrsz = find_stray_sz(stray);
 		freeall(stray, find_stray_sz(stray));
-		free (stray);
 	}
 	else
 	{
 		ret = ps_validate_input(argc, argv, 1);
-		if (ret == NULL)
-			return (NULL);
 		arrsz = argc - 1;
 	}
+	stray = NULL;
+	if (ret == NULL)
+		return (freeall(stray, find_stray_sz(stray)), NULL);
 	if (check_duplicate(ret, arrsz) == 0)
 		return (free(ret), NULL);
 	ret = simplify_arr(ret, arrsz);
